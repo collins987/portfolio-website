@@ -5,17 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vincent Collins Portfolio</title>
 
-  <!-- Bootstrap -->
+  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
         crossorigin="anonymous">
 
   <link rel="stylesheet" href="main.css">
-  <script src="main.js"></script>
+  
 </head>
 <body>
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm" role="navigation">
     <div class="container">
       <a class="navbar-brand font-weight-bold" href="#hero">VC</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" 
@@ -31,6 +31,7 @@
           <li class="nav-item"><a class="nav-link" href="#journey">Journey</a></li>
           <li class="nav-item"><a class="nav-link" href="#exploring">Learning</a></li>
           <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -124,7 +125,7 @@
       <!-- Project 1: Project Nexus -->
       <div class="col-md-6 mb-4 fade-in stagger">
         <div class="card h-100 shadow-sm">
-          <img src="images/project-nexus.jpeg" class="card-img-top" alt="Project Nexus" 
+          <img src="images/project-nexus.jpeg" class="card-img-top" alt="Project Nexus" loading="lazy"
                onerror="this.src='https://via.placeholder.com/600x300?text=Project+Nexus'">
           <div class="card-body">
             <span class="badge badge-primary mb-2">Featured Project</span>
@@ -142,7 +143,8 @@
       <!-- Project 2: Azure Security Labs -->
       <div class="col-md-6 mb-4 fade-in stagger">
         <div class="card h-100 shadow-sm">
-          <img src="images/az500-labs.jpeg" class="card-img-top" alt="Azure Security Labs">
+          <img src="images/az500-labs.jpeg" class="card-img-top" alt="Azure Security Labs" loading="lazy"
+               onerror="this.src='https://via.placeholder.com/600x300?text=Azure+Security+Labs'">
           <div class="card-body">
             <span class="badge badge-danger mb-2">Technical Depth</span>
             <h5 class="card-title">Azure Security Engineer Labs</h5>
@@ -159,7 +161,8 @@
       <!-- Project 3: Doctor Consultation App -->
       <div class="col-md-6 mb-4 fade-in stagger">
         <div class="card h-100 shadow-sm">
-          <img src="images/doctor-app.jpeg" class="card-img-top" alt="Doctor Consultation App">
+          <img src="images/doctor-app.jpeg" class="card-img-top" alt="Doctor Consultation App" loading="lazy"
+               onerror="this.src='https://via.placeholder.com/600x300?text=Doctor+Consultation+App'">
           <div class="card-body">
             <span class="badge badge-success mb-2">Full-Stack</span>
             <h5 class="card-title">Doctor Consultation Application</h5>
@@ -176,7 +179,8 @@
       <!-- Project 4: Real-Time Chat -->
       <div class="col-md-6 mb-4 fade-in stagger">
         <div class="card h-100 shadow-sm">
-          <img src="images/chat-app.jpeg" class="card-img-top" alt="Real-Time Chat App">
+          <img src="images/chat-app.jpeg" class="card-img-top" alt="Real-Time Chat App" loading="lazy"
+               onerror="this.src='https://via.placeholder.com/600x300?text=Real-Time+Chat+App'">
           <div class="card-body">
             <span class="badge badge-info mb-2">Modern Architecture</span>
             <h5 class="card-title">Real-Time Chat Application</h5>
@@ -195,7 +199,8 @@
     <div class="row mt-4">
       <div class="col-md-4 mb-3 fade-in stagger">
         <div class="card h-100">
-          <img src="images/sc900-labs.jpeg" class="card-img-top" alt="SC-900 Labs">
+          <img src="images/sc900-labs.jpeg" class="card-img-top" alt="SC-900 Labs" loading="lazy"
+               onerror="this.src='https://via.placeholder.com/600x300?text=SC-900+Labs'">
           <div class="card-body">
             <h6>Microsoft SC-900 Labs</h6>
             <p class="small">Hands-on labs with Microsoft Entra ID, Defender, Sentinel, and Purview exploring compliance and governance.</p>
@@ -204,6 +209,7 @@
       </div>
       <div class="col-md-4 mb-3 fade-in stagger">
         <div class="card h-100">
+          <!-- No image, so no img tag -->
           <div class="card-body">
             <h6>Python Automation Scripts</h6>
             <p class="small">Automated financial data analysis tasks, improving workflow efficiency at Garnet Finance.</p>
@@ -212,6 +218,7 @@
       </div>
       <div class="col-md-4 mb-3 fade-in stagger">
         <div class="card h-100">
+          <!-- No image, so no img tag -->
           <div class="card-body">
             <h6>Employee CRUD System</h6>
             <p class="small">Full-stack employee management system with create, read, update, and delete operations.</p>
@@ -435,16 +442,32 @@
 
       <div class="social-icons-wrapper d-flex justify-content-center flex-wrap">
         <a href="https://github.com/collins987/" target="_blank" class="social-icon" aria-label="GitHub">
-          <img src="images/github.png" alt="GitHub" class="icon-img">
+          <img src="images/github.png" alt="GitHub" class="icon-img" loading="lazy"
+               onerror="this.src='https://via.placeholder.com/50x50?text=GitHub'">
         </a>
         <a href="https://www.linkedin.com/in/vincentcollins1/" target="_blank" class="social-icon" aria-label="LinkedIn">
-          <img src="images/linkedin.png" alt="LinkedIn" class="icon-img">
+          <img src="images/linkedin.png" alt="LinkedIn" class="icon-img" loading="lazy"
+               onerror="this.src='https://via.placeholder.com/50x50?text=LinkedIn'">
         </a>
         <a href="mailto:vincentcollins690@gmail.com" class="social-icon" aria-label="Email">
-          <img src="images/email.jpg" alt="Email" class="icon-img">
+          <img src="images/email.jpg" alt="Email" class="icon-img" loading="lazy"
+               onerror="this.src='https://via.placeholder.com/50x50?text=Email'">
         </a>
       </div>
     </div>
   </section>
+
+  <!-- Bootstrap JS Dependencies -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+          integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+          crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+          integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
+          crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+          integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+          crossorigin="anonymous"></script>
+
+  <script src="main.js"></script>
 </body>
 </html>

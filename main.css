@@ -1,12 +1,24 @@
+/* CSS Variables for Colors */
+:root {
+  --primary-navy: #1e3c72;
+  --light-blue: #5bc0de;
+  --dark-bg: #121212;
+  --dark-card: #1e1e1e;
+  --text-light: #f1f1f1;
+  --text-dark: #333;
+  --shadow-light: rgba(0,0,0,0.1);
+  --shadow-hover: rgba(91,192,222,0.3);
+}
+
 /* General Styles */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   background-color: #f8f9fa;
-  color: #333;
+  color: var(--text-dark);
   margin: 0;
   padding: 0;
-  transition: background 0.5s ease;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 h1, h2, h3, h4, h5 {
@@ -28,7 +40,7 @@ a {
 
 .navbar-brand {
   font-size: 1.5rem;
-  color: #1e3c72 !important;
+  color: var(--primary-navy);
   transition: color 0.3s ease;
 }
 
@@ -45,7 +57,7 @@ a {
   height: 2px;
   bottom: 0;
   left: 50%;
-  background-color: #5bc0de;
+  background-color: var(--light-blue);
   transition: width 0.3s ease, left 0.3s ease;
 }
 
@@ -106,42 +118,22 @@ a {
 }
 
 /* -------------------
-   Profile Section (Legacy)
-------------------- */
-#profile {
-  animation: fadeIn 1s ease-in-out;
-}
-
-#profile-pic {
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
-}
-
-#profile-pic:hover {
-  transform: scale(1.05);
-}
-
-/* -------------------
    About + Skills
 ------------------- */
 #about-skills .card {
   border-radius: 12px;
-  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0px 2px 6px var(--shadow-light);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid #e0e0e0;
 }
 
 #about-skills .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0px 6px 15px rgba(91,192,222,0.3);
+  box-shadow: 0px 6px 15px var(--shadow-hover);
 }
 
 #about-skills h5 {
-  color: #1e3c72;
+  color: var(--primary-navy);
   margin-top: 15px;
   margin-bottom: 10px;
 }
@@ -213,6 +205,22 @@ a {
   position: relative;
 }
 
+.timeline {
+  position: relative;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--light-blue), var(--primary-navy));
+  transform: translateX(-50%);
+}
+
 .timeline-content {
   animation: slideIn 0.5s ease-out;
 }
@@ -258,61 +266,21 @@ a {
 #experience .card, 
 #education .card {
   border-radius: 12px;
-  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0px 2px 6px var(--shadow-light);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-left: 4px solid #5bc0de;
+  border-left: 4px solid var(--light-blue);
 }
 
 #experience .card:hover,
 #education .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0px 6px 15px rgba(91,192,222,0.3);
-  border-left-color: #1e3c72;
+  box-shadow: 0px 6px 15px var(--shadow-hover);
+  border-left-color: var(--primary-navy);
 }
 
 /* -------------------
-   Projects Grid
+   Featured Projects Cards
 ------------------- */
-.projects-section {
-  position: relative;
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.project-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-}
-
-.project-card img {
-  max-width: 100%;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  height: 180px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 10px 20px rgba(91,192,222,0.4);
-}
-
-.project-card:hover img {
-  transform: scale(1.05);
-}
-
-/* Featured Projects Cards */
 .projects-section .card {
   border: none;
   border-radius: 15px;
@@ -345,7 +313,7 @@ a {
 ------------------- */
 .contact-card {
   border-radius: 12px;
-  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0px 2px 6px var(--shadow-light);
   border: 1px solid #ddd;
   transition: transform 0.3s ease;
   background: #fff;
@@ -404,40 +372,27 @@ a {
 .btn-resume {
   border: 2px solid #000;
   margin-top: 20px;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .btn-resume:hover {
-  background: #1e3c72;
+  background: var(--primary-navy);
   color: #fff;
-  border-color: #1e3c72;
+  border-color: var(--primary-navy);
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(30, 60, 114, 0.3);
 }
 
 /* -------------------
-   Footer
-------------------- */
-footer {
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-  color: #fff;
-  padding: 20px 0;
-  margin-top: 40px;
-  border-top: 3px solid #5bc0de;
-}
-
-/* -------------------
    Buttons
 ------------------- */
-.btn-primary,
-.btn-lightblue {
-  background-color: #5bc0de;
-  border-color: #5bc0de;
-  transition: all 0.3s ease;
+.btn-primary {
+  background-color: var(--light-blue);
+  border-color: var(--light-blue);
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 
-.btn-primary:hover,
-.btn-lightblue:hover {
+.btn-primary:hover {
   background-color: #31b0d5;
   border-color: #269abc;
   transform: translateY(-2px);
@@ -469,7 +424,7 @@ footer {
 ------------------- */
 #scrollToTop,
 #darkModeToggle {
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #scrollToTop:hover,
@@ -482,24 +437,23 @@ footer {
    Dark Mode
 ------------------- */
 body.dark-mode {
-  background-color: #121212;
-  color: #f1f1f1;
+  background-color: var(--dark-bg);
+  color: var(--text-light);
 }
 
 body.dark-mode .navbar {
-  background-color: #1e1e1e !important;
+  background-color: var(--dark-card) !important;
 }
 
 body.dark-mode .navbar-brand,
 body.dark-mode .nav-link {
-  color: #f1f1f1 !important;
+  color: var(--text-light) !important;
 }
 
 body.dark-mode .card,
-body.dark-mode .contact-card,
-body.dark-mode .project-card {
-  background: #1e1e1e;
-  color: #f1f1f1;
+body.dark-mode .contact-card {
+  background: var(--dark-card);
+  color: var(--text-light);
   border-color: #333;
 }
 
@@ -516,16 +470,12 @@ body.dark-mode .timeline-section {
 }
 
 body.dark-mode .timeline::before {
-  background: linear-gradient(to bottom, #5bc0de, #1e3c72);
+  background: linear-gradient(to bottom, var(--light-blue), var(--primary-navy));
 }
 
 body.dark-mode .timeline-content {
   background: #2a2a2a;
   border: 1px solid #444;
-}
-
-body.dark-mode footer {
-  background: linear-gradient(135deg, #0a1628 0%, #1a2f4f 100%);
 }
 
 body.dark-mode h1,
@@ -536,7 +486,7 @@ body.dark-mode h5,
 body.dark-mode p,
 body.dark-mode a,
 body.dark-mode .lead {
-  color: #f1f1f1 !important;
+  color: var(--text-light) !important;
 }
 
 body.dark-mode .text-muted {
@@ -561,7 +511,7 @@ body.dark-mode .badge-info {
 
 /* Active Navbar Link */
 nav a.active-link {
-  color: #5bc0de !important;
+  color: var(--light-blue) !important;
   font-weight: bold;
 }
 
@@ -579,12 +529,16 @@ nav a.active-link {
     font-size: 1.1rem;
   }
 
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .timeline-content {
+    width: 100%; /* Stack for better readability */
   }
 
-  .timeline-content {
-    width: 45%;
+  .timeline::before {
+    left: 20px; /* Move line to left for mobile stacking */
+  }
+
+  .timeline-item {
+    flex-direction: row; /* Adjust if needed */
   }
 }
 
@@ -611,10 +565,6 @@ nav a.active-link {
     margin-bottom: 20px;
   }
 
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
   .social-icons-wrapper {
     gap: 25px;
   }
@@ -628,6 +578,10 @@ nav a.active-link {
   #darkModeToggle {
     padding: 8px 12px;
     font-size: 16px;
+  }
+
+  .timeline::before {
+    left: 10px;
   }
 }
 
@@ -664,7 +618,7 @@ nav a.active-link {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  background: linear-gradient(135deg, var(--primary-navy) 0%, #2a5298 100%);
   display: flex;
   justify-content: center;
   align-items: center;

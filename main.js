@@ -172,7 +172,7 @@ window.addEventListener('scroll', () => {
 // =====================
 // Project Card Hover Tilt
 // =====================
-const projectCards = document.querySelectorAll(".project-card");
+const projectCards = document.querySelectorAll(".projects-section .card");
 
 projectCards.forEach(card => {
   card.addEventListener("mousemove", e => {
@@ -189,28 +189,6 @@ projectCards.forEach(card => {
   card.addEventListener("mouseleave", () => {
     card.style.transform = "rotateX(0) rotateY(0) scale(1)";
   });
-});
-
-// =====================
-// Lazy Loading Images
-// =====================
-const lazyImages = document.querySelectorAll("img");
-
-const lazyObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const img = entry.target;
-      if (img.dataset.src) {
-        img.src = img.dataset.src;
-      }
-      img.classList.add('loaded');
-      observer.unobserve(img);
-    }
-  });
-});
-
-lazyImages.forEach(img => {
-  lazyObserver.observe(img);
 });
 
 // =====================
@@ -282,20 +260,24 @@ if (heroTitle) {
 }
 
 // =====================
-// Interactive Background Animation
+// Interactive Background Animation (Throttled)
 // =====================
 const body = document.body;
 let hue = 200;
+let lastAnimationTime = 0;
+const animationThrottle = 100; // ms between updates
 
-function animateBackground() {
-  if (!body.classList.contains('dark-mode')) {
+function animateBackground(timestamp) {
+  if (!lastAnimationTime) lastAnimationTime = timestamp;
+  if (timestamp - lastAnimationTime > animationThrottle && !body.classList.contains('dark-mode')) {
     hue = (hue + 0.1) % 60 + 200;
     body.style.background = `linear-gradient(135deg, hsl(${hue}, 70%, 95%), hsl(${(hue + 30) % 360}, 60%, 90%))`;
+    lastAnimationTime = timestamp;
   }
   requestAnimationFrame(animateBackground);
 }
 
-animateBackground();
+requestAnimationFrame(animateBackground);
 
 // =====================
 // Parallax Effect for Hero Section
@@ -364,44 +346,6 @@ rippleStyle.textContent = `
 document.head.appendChild(rippleStyle);
 
 // =====================
-// Skills Progress Bars Animation
-// =====================
-const skillsSection = document.querySelector('#about-skills');
-
-if (skillsSection) {
-  const skillsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const progressBars = entry.target.querySelectorAll('.progress-bar');
-        progressBars.forEach(bar => {
-          const width = bar.getAttribute('data-width') || '0%';
-          bar.style.width = width;
-        });
-      }
-    });
-  }, { threshold: 0.5 });
-  
-  skillsObserver.observe(skillsSection);
-}
-
-// =====================
-// Contact Form Animation
-// =====================
-const contactInputs = document.querySelectorAll('#contact input, #contact textarea');
-
-contactInputs.forEach(input => {
-  input.addEventListener('focus', function() {
-    this.parentElement.style.transform = 'scale(1.02)';
-    this.style.borderColor = '#5bc0de';
-  });
-  
-  input.addEventListener('blur', function() {
-    this.parentElement.style.transform = 'scale(1)';
-    this.style.borderColor = '';
-  });
-});
-
-// =====================
 // Easter Egg: Konami Code
 // =====================
 let konamiCode = [];
@@ -429,26 +373,6 @@ rainbowStyle.textContent = `
 document.head.appendChild(rainbowStyle);
 
 // =====================
-// Performance: Debounce Scroll Events
-// =====================
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
-
-// Apply debounce to scroll-heavy operations
-window.addEventListener('scroll', debounce(() => {
-  // Any additional scroll operations can go here
-}, 10));
-
-// =====================
 // Accessibility: Skip to Content Link
 // =====================
 const skipLink = document.createElement('a');
@@ -474,4 +398,3 @@ skipLink.addEventListener('blur', () => {
 document.body.prepend(skipLink);
 
 console.log('🚀 Portfolio loaded successfully!');
-console.log('💡 Tip: Try the Konami code for a surprise!');
