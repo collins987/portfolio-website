@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vincent Collins Portfolio</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+        crossorigin="anonymous">
+
+  <link rel="stylesheet" href="main.css">
+  <script src="main.js"></script>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand font-weight-bold" href="#hero">VC</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" 
+              data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about-skills">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#journey">Journey</a></li>
+          <li class="nav-item"><a class="nav-link" href="#exploring">Learning</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section text-center" id="hero">
+    <div class="container">
+      <h1 class="display-3 font-weight-bold">Business Analyst & Back-End Developer</h1>
+      <p class="lead mt-4">
+        Building Secure, Data-Driven Cloud Solutions
+      </p>
+      <p class="lead">
+        I bridge business strategy and technical execution through data analysis, process automation, 
+        and secure cloud architecture. From optimizing workflows at Kenya Revenue Authority to building 
+        production-ready applications, I deliver solutions that drive measurable impact.
+      </p>
+      <div class="cta-buttons">
+        <a href="#projects" class="btn btn-primary-custom btn-lg">View My Work</a>
+        <a href="#contact" class="btn btn-outline-custom btn-lg">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me & Skills Section -->
+  <div class="container my-5 fade-in" id="about-skills">
+    <div class="row">
+      <div class="col-md-6 fade-in">
+        <div class="card card-body h-100 border-dark">
+          <h4>About Me</h4>
+          <hr>
+          <p>
+            I'm Vincent Collins, a Business Analyst and Back-End Developer bridging the gap between 
+            business logic and technical architecture. My journey began with a foundation in Business IT, 
+            evolved through IT operations and data analysis, and now converges in secure back-end development 
+            and cloud architecture.
+          </p>
+          <p>
+            <strong>My Journey:</strong> Starting as an IT Intern at Nakuru Law Courts (improving system 
+            security by 25%), I transitioned to Data Analyst at Garnet Finance (reducing operational errors 
+            by 25% through Python automation), and currently serve as a Business Analyst at Kenya Revenue 
+            Authority, mapping workflows and translating business requirements into technical solutions.
+          </p>
+          <p>
+            <strong>My Philosophy:</strong> I'm fascinated by the intersection of business logic and technical 
+            architecture. Whether mapping workflows to reduce inefficiencies or building secure APIs, I focus 
+            on solutions that are both user-centric and technically robust. Every line of code should solve 
+            a real business problem.
+          </p>
+          <p>
+            <strong>Current Focus:</strong> Specializing in secure back-end systems with cloud-native 
+            architecture, combining AWS, Azure security controls, and modern DevOps practices to build 
+            enterprise-grade applications.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 fade-in">
+        <div class="card card-body h-100 border-dark">
+          <h4>Skills & Expertise</h4>
+          <hr>
+          <h5>Languages & Frameworks</h5>
+          <p>Python, Django, JavaScript, Node.js, Express.js, React, SQL, HTML/CSS</p>
+
+          <h5>Cloud & DevOps</h5>
+          <p>AWS (EC2, S3, CloudFormation), Azure (RBAC, Key Vault, Defender, Sentinel), Docker, Kubernetes, Jenkins, Ansible</p>
+
+          <h5>Data & Analytics</h5>
+          <p>Power BI, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, SQL, Excel</p>
+
+          <h5>Security</h5>
+          <p>JWT Authentication, Azure Security Controls, Microsoft Defender, Identity Management, Zero-Trust Architecture</p>
+
+          <h5>Business Analysis</h5>
+          <p>Requirements Gathering, Process Mapping, UAT, Stakeholder Management, KPI Tracking</p>
+
+          <h5>Tools</h5>
+          <p>Git/GitHub, VS Code, Jupyter Notebook, Firebase, PostgreSQL, MongoDB, Gunicorn</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects Section -->
+  <div class="container my-5 projects-section fade-in" id="projects">
+    <h2 class="mb-4 text-center">Featured Projects</h2>
+    <p class="text-center mb-5 text-muted">From problem identification to production deployment</p>
+    
+    <div class="row">
+      <!-- Project 1: Project Nexus -->
+      <div class="col-md-6 mb-4 fade-in stagger">
+        <div class="card h-100 shadow-sm">
+          <img src="images/project-nexus.jpeg" class="card-img-top" alt="Project Nexus" 
+               onerror="this.src='https://via.placeholder.com/600x300?text=Project+Nexus'">
+          <div class="card-body">
+            <span class="badge badge-primary mb-2">Featured Project</span>
+            <h5 class="card-title">Online Poll System (Project Nexus)</h5>
+            <p class="text-muted small">Production-ready voting platform with enterprise-grade security</p>
+            <hr>
+            <p><strong>Problem:</strong> Organizations need secure, transparent voting systems that prevent fraud while maintaining user privacy.</p>
+            <p><strong>Solution:</strong> Built with Django REST Framework, PostgreSQL, Docker, and JWT authentication. Implemented database-level constraints to prevent duplicate votes and containerized for consistent deployment.</p>
+            <p><strong>Tech Stack:</strong> Django, PostgreSQL, Docker, JWT, Gunicorn, Render</p>
+            <p><strong>Outcome:</strong> Production-deployed with 99.9% uptime, supporting concurrent voting sessions</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: Azure Security Labs -->
+      <div class="col-md-6 mb-4 fade-in stagger">
+        <div class="card h-100 shadow-sm">
+          <img src="images/az500-labs.jpeg" class="card-img-top" alt="Azure Security Labs">
+          <div class="card-body">
+            <span class="badge badge-danger mb-2">Technical Depth</span>
+            <h5 class="card-title">Azure Security Engineer Labs</h5>
+            <p class="text-muted small">Enterprise cloud security in practice</p>
+            <hr>
+            <p><strong>Problem:</strong> Cloud environments require layered security controls to protect against modern threats.</p>
+            <p><strong>Solution:</strong> Implemented just-in-time VM access, configured NSGs with least-privilege principles, and set up Sentinel SIEM for threat detection.</p>
+            <p><strong>Tech Stack:</strong> Azure RBAC, Key Vault, Microsoft Defender, Sentinel, ARM Templates</p>
+            <p><strong>Outcome:</strong> Demonstrated ability to secure enterprise Azure environments aligned with zero-trust architecture</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3: Doctor Consultation App -->
+      <div class="col-md-6 mb-4 fade-in stagger">
+        <div class="card h-100 shadow-sm">
+          <img src="images/doctor-app.jpeg" class="card-img-top" alt="Doctor Consultation App">
+          <div class="card-body">
+            <span class="badge badge-success mb-2">Full-Stack</span>
+            <h5 class="card-title">Doctor Consultation Application</h5>
+            <p class="text-muted small">Connecting patients with healthcare providers in real-time</p>
+            <hr>
+            <p><strong>Problem:</strong> Healthcare providers need efficient appointment systems with secure patient data handling.</p>
+            <p><strong>Solution:</strong> Built appointment booking system with Firebase for real-time updates and HIPAA-compliant infrastructure. Implemented role-based access for patients vs. doctors.</p>
+            <p><strong>Tech Stack:</strong> Firebase (Realtime DB + Auth), React, REST APIs</p>
+            <p><strong>Outcome:</strong> Secure booking system with sub-second data synchronization</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4: Real-Time Chat -->
+      <div class="col-md-6 mb-4 fade-in stagger">
+        <div class="card h-100 shadow-sm">
+          <img src="images/chat-app.jpeg" class="card-img-top" alt="Real-Time Chat App">
+          <div class="card-body">
+            <span class="badge badge-info mb-2">Modern Architecture</span>
+            <h5 class="card-title">Real-Time Chat Application</h5>
+            <p class="text-muted small">Secure messaging with the MERN stack</p>
+            <hr>
+            <p><strong>Problem:</strong> Need for secure, real-time communication platform with proper access controls.</p>
+            <p><strong>Solution:</strong> Developed with MERN stack using JWT for session management and implemented access control to prevent unauthorized message viewing.</p>
+            <p><strong>Tech Stack:</strong> MongoDB, Express.js, React, Node.js, WebSockets</p>
+            <p><strong>Outcome:</strong> Scalable chat system supporting multiple concurrent users</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Projects -->
+    <div class="row mt-4">
+      <div class="col-md-4 mb-3 fade-in stagger">
+        <div class="card h-100">
+          <img src="images/sc900-labs.jpeg" class="card-img-top" alt="SC-900 Labs">
+          <div class="card-body">
+            <h6>Microsoft SC-900 Labs</h6>
+            <p class="small">Hands-on labs with Microsoft Entra ID, Defender, Sentinel, and Purview exploring compliance and governance.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3 fade-in stagger">
+        <div class="card h-100">
+          <div class="card-body">
+            <h6>Python Automation Scripts</h6>
+            <p class="small">Automated financial data analysis tasks, improving workflow efficiency at Garnet Finance.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3 fade-in stagger">
+        <div class="card h-100">
+          <div class="card-body">
+            <h6>Employee CRUD System</h6>
+            <p class="small">Full-stack employee management system with create, read, update, and delete operations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Learning Journey Timeline -->
+  <section class="timeline-section" id="journey">
+    <div class="container">
+      <h2 class="text-center mb-5">My Learning Journey</h2>
+      <p class="text-center text-muted mb-5">A visual representation of continuous growth and skill development</p>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">2019 - 2023</div>
+            <div class="timeline-title">Business IT Foundation</div>
+            <div class="timeline-description">Bachelor's Degree in Business Information Technology at Kabarak University</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">May - Aug 2023</div>
+            <div class="timeline-title">IT Operations & Security</div>
+            <div class="timeline-description">IT Intern at Nakuru Law Courts | Improved system security by 25%, 90% user satisfaction</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">May - Aug 2024</div>
+            <div class="timeline-title">Cloud Infrastructure</div>
+            <div class="timeline-description">AWS Cloud Practitioner | DevOps, Docker, Kubernetes, CI/CD</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">Sep - Dec 2024</div>
+            <div class="timeline-title">Data Analytics</div>
+            <div class="timeline-description">Data Analyst at Garnet Finance | 25% error reduction, Python automation</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">Mar - Jun 2025</div>
+            <div class="timeline-title">Professional Development</div>
+            <div class="timeline-description">ALX Professional Foundations | Leadership & workplace readiness</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">May 2025 - Present</div>
+            <div class="timeline-title">Business Analysis</div>
+            <div class="timeline-description">Business Analyst at KRA | Stakeholder engagement, process mapping, UAT</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">Jun - Oct 2025</div>
+            <div class="timeline-title">Back-End Specialization</div>
+            <div class="timeline-description">ALX Back-End ProDev | Django, APIs, SQL for scalable applications</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">Jun - Aug 2025</div>
+            <div class="timeline-title">Cloud Security Expert</div>
+            <div class="timeline-description">Azure Security Engineer | Zero-trust architecture, Sentinel SIEM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Currently Exploring Section -->
+  <section class="exploring-section" id="exploring">
+    <div class="container">
+      <h2 class="text-center mb-2">Currently Exploring</h2>
+      <p class="text-center mb-5" style="opacity: 0.9;">Continuous learning is at the core of my professional development</p>
+      
+      <div class="row">
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="exploring-card text-center">
+            <span class="exploring-icon">🔐</span>
+            <h5>Microsoft Azure Security</h5>
+            <p>Implementing zero-trust architecture and Sentinel SIEM for enterprise cloud environments. Mastering Azure Defender and advanced threat protection.</p>
+            <span class="learning-badge">Active</span>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="exploring-card text-center">
+            <span class="exploring-icon">🤖</span>
+            <h5>n8n Automation</h5>
+            <p>Mastering low-code automation to connect services and build production-ready workflows. Creating efficient integrations between business systems.</p>
+            <span class="learning-badge">In Progress</span>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="exploring-card text-center">
+            <span class="exploring-icon">🌐</span>
+            <h5>Google Cloud & GenAI</h5>
+            <p>Exploring how to build and modernize applications with Generative AI on Google Cloud Platform. Leveraging AI for business transformation.</p>
+            <span class="learning-badge">Exploring</span>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="exploring-card text-center">
+            <span class="exploring-icon">🛡️</span>
+            <h5>CISCO Ethical Hacker</h5>
+            <p>Deepening understanding of network security and defensive strategies. Learning offensive security techniques to build better defenses.</p>
+            <span class="learning-badge">Upcoming</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Experience Section -->
+  <div class="container my-5 fade-in" id="experience">
+    <h2 class="mb-4">Work Experience</h2>
+    <div class="card card-body mb-3 fade-in stagger"> 
+      <h5>Business Analyst <span class="text-muted">| Kenya Revenue Authority (KRA), Nairobi</span></h5>
+      <p><em>May 2025 – May 2026</em></p>
+      <ul>
+        <li>Engaged stakeholders across departments to define business goals and translate them into functional requirements.</li>
+        <li>Mapped workflows to identify automation opportunities, efficiency gains, and cost reduction strategies.</li>
+        <li>Acted as a liaison between technical teams and business units, ensuring clear expectations throughout projects.</li>
+        <li>Reviewed UI/UX prototypes and system designs for business alignment and user needs.</li>
+        <li>Utilized SQL, Excel, and BI dashboards to track KPIs and support data-driven decisions.</li>
+        <li>Created test plans, facilitated UAT, and documented feedback for solution validation.</li>
+      </ul>
+    </div>
+
+    <div class="card card-body mb-3 fade-in stagger">
+      <h5>Data Analyst <span class="text-muted">| Garnet Finance, Nairobi</span></h5>
+      <p><em>Sept 2024 – Dec 2024</em></p>
+      <ul>
+        <li><strong>Achieved 25% reduction in operational errors</strong> and <strong>15% productivity increase</strong> by collaborating with engineering teams to optimize workflows.</li>
+        <li>Automated financial analysis tasks using Python and Bash scripts, streamlining workflows.</li>
+        <li>Identified security vulnerabilities and supported compliance initiatives in distributed systems.</li>
+        <li>Demonstrated strong time management, communication, and independence in a remote role.</li>
+      </ul>
+    </div>
+
+    <div class="card card-body mb-3 fade-in stagger">
+      <h5>IT Intern <span class="text-muted">| Nakuru Law Courts, Nakuru</span></h5>
+      <p><em>May 2023 – Aug 2023</em></p>
+      <ul>
+        <li><strong>Improved system protection by 25%</strong> through implementation of security patches.</li>
+        <li>Monitored performance and resolved remote support issues, <strong>achieving 90% user satisfaction</strong>.</li>
+        <li>Managed user accounts, IT assets, and supported audio-visual setups for court sessions.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Education Section -->
+  <div class="container my-5 fade-in" id="education">
+    <h2 class="mb-4">Education & Certifications</h2>
+    <div class="card card-body mb-3 fade-in stagger">
+      <h5>Azure Security Engineer Associate <span class="text-muted">| Cyber Shujaa, Nairobi</span></h5>
+      <p><em>June 2025 – Aug 2025</em></p>
+      <p>Hands-on training in cloud security, identity management, and network protection using Azure Defender & Sentinel.</p>
+    </div>
+
+    <div class="card card-body mb-3 fade-in stagger">
+      <h5>Microsoft Security, Compliance & Identity Fundamentals <span class="text-muted">| Cyber Shujaa, Nairobi</span></h5>
+      <p><em>May 2025</em></p>
+      <p>Gained foundational knowledge of Microsoft Entra ID, zero-trust principles, compliance tools, and Defender solutions.</p>
+    </div>
+
+    <div class="card card-body mb-3 fade-in stagger">
+      <h5>ALX Back-End ProDev <span class="text-muted">| ALX Africa, Nairobi</span></h5>
+      <p><em>June 2025 – Oct 2025</em></p>
+      <p>Mastered advanced backend technologies (Python, Django, JavaScript, SQL) for building scalable applications.</p>
+    </div>
+
+    <div class="card card-body mb-3 fade-in stagger">
+      <h5>ALX Professional Foundations <span class="text-muted">| ALX Africa, Nairobi</span></h5>
+      <p><em>Mar 2025 – June 2025</em></p>
+      <p>Acquired leadership and workplace readiness skills to thrive in professional environments.</p>
+    </div>
+
+    <div class="card card-body mb-3 fade-in stagger">
+      <h5>AWS Cloud Practitioner <span class="text-muted">| AWS re/Start, Nairobi</span></h5>
+      <p><em>May 2024 – Aug 2024</em></p>
+      <p>Learned fundamentals of AWS services, cloud security, DevOps tools, containerization, and CI/CD practices.</p>
+    </div>
+
+    <div class="card card-body mb-3 fade-in stagger">
+      <h5>Bachelor's Degree in Business Information Technology <span class="text-muted">| Kabarak University, Nakuru</span></h5>
+      <p><em>Sept 2019 – Dec 2024</em></p>
+      <p>Relevant coursework: Data Communication, Operating Systems, Web Programming, Java, Data Mining, OOP, and Database Systems.</p>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <section id="contact" class="container my-5">
+    <div class="card contact-card p-5">
+      <h2 class="mb-4 text-center">Let's Connect</h2>
+      <p class="text-center mb-5">Feel free to reach out through the platforms below:</p>
+
+      <div class="social-icons-wrapper d-flex justify-content-center flex-wrap">
+        <a href="https://github.com/collins987/" target="_blank" class="social-icon" aria-label="GitHub">
+          <img src="images/github.png" alt="GitHub" class="icon-img">
+        </a>
+        <a href="https://www.linkedin.com/in/vincentcollins1/" target="_blank" class="social-icon" aria-label="LinkedIn">
+          <img src="images/linkedin.png" alt="LinkedIn" class="icon-img">
+        </a>
+        <a href="mailto:vincentcollins690@gmail.com" class="social-icon" aria-label="Email">
+          <img src="images/email.jpg" alt="Email" class="icon-img">
