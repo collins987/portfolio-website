@@ -400,6 +400,326 @@ window.addEventListener('load', () => {
 });
 
 // =====================
+// ENHANCED PROJECT CAROUSEL WITH NAVIGATION
+// Add this to the END of your main.js file
+// =====================
+
+function createProjectCarousel() {
+  const projectsSection = document.querySelector('.projects-section');
+  if (!projectsSection) return;
+  
+  // Project data
+  const projects = [
+    {
+      title: 'Online Poll System',
+      badge: 'Featured',
+      description: 'Production-ready voting platform with enterprise-grade security. Built with Django REST Framework, PostgreSQL, and Docker. Implemented database-level constraints to prevent duplicate votes and JWT authentication for secure access.',
+      tech: ['Django', 'PostgreSQL', 'Docker', 'JWT', 'Gunicorn'],
+      outcome: 'Production-deployed with 99.9% uptime, supporting concurrent voting sessions',
+      image: 'images/project-nexus.PNG',
+      github: 'https://github.com/collins987/',
+      demo: '#'
+    },
+    {
+      title: 'Azure Security Engineer Labs',
+      badge: 'Security',
+      description: 'Enterprise cloud security in practice. Implemented just-in-time VM access, NSGs with least-privilege and Sentinel SIEM integration.',
+      tech: ['Azure RBAC', 'Key Vault', 'Defender', 'Sentinel', 'ARM'],
+      outcome: 'Demonstrated zero-trust patterns on Azure',
+      image: 'images/az500-labs.jpeg',
+      github: 'https://github.com/collins987/',
+      demo: '#'
+    },
+    {
+      title: 'Doctor Consultation Application',
+      badge: 'Full-Stack',
+      description: 'Real-time appointment booking with Firebase and RBAC. Mobile application for healthcare consultation with role-based access control.',
+      tech: ['Firebase', 'Java', 'Android', 'Gradle', 'RBAC'],
+      outcome: 'Streamlined healthcare appointment scheduling with real-time updates',
+      image: 'images/doctor-app.jpeg',
+      github: 'https://github.com/collins987/',
+      demo: '#'
+    },
+    {
+      title: 'Real-Time Chat Application',
+      badge: 'MERN Stack',
+      description: 'Secure messaging platform with JWT & WebSocket connections for real-time communication. Full-stack application with modern architecture.',
+      tech: ['MongoDB', 'Express.js', 'React', 'Node.js'],
+      outcome: 'Real-time messaging with secure authentication and responsive design',
+      image: 'images/chat-app.jpeg',
+      github: 'https://github.com/collins987/',
+      demo: '#'
+    },
+    {
+      title: 'Microsoft SC-900 Labs',
+      badge: 'Compliance',
+      description: 'Hands-on labs on security, compliance and identity with Microsoft cloud services. Comprehensive coverage of Microsoft security solutions.',
+      tech: ['Entra ID', 'Defender', 'Purview'],
+      outcome: 'Demonstrated compliance and security best practices on Microsoft platform',
+      image: 'images/sc900-labs.jpeg',
+      github: 'https://github.com/collins987/',
+      demo: '#'
+    }
+  ];
+
+  // Create full-width carousel HTML
+  const carouselHTML = `
+    <div class="projects-carousel-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center mb-5">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="title-underline"></div>
+            <p class="section-subtitle">From problem identification to production deployment</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="projects-carousel-full">
+        <button class="carousel-nav carousel-nav-left" aria-label="Previous project">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="projects-carousel-container">
+          <div class="projects-carousel-track">
+            ${projects.map((project, index) => `
+              <div class="project-carousel-card" data-index="${index}">
+                <div class="project-carousel-image">
+                  <img src="${project.image}" alt="${project.title}" 
+                       onerror="this.src='https://via.placeholder.com/550x320?text=${encodeURIComponent(project.title)}'">
+                  <span class="project-carousel-badge">${project.badge}</span>
+                  <div class="project-carousel-overlay">
+                    <div class="project-carousel-links">
+                      <a href="${project.github}" target="_blank" class="project-link" title="View on GitHub">
+                        <i class="fab fa-github"></i>
+                      </a>
+                      <a href="${project.demo}" target="_blank" class="project-link" title="Live Demo">
+                        <i class="fas fa-external-link-alt"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="project-carousel-content">
+                  <h3 class="project-carousel-title">${project.title}</h3>
+                  <p class="project-carousel-description">${project.description}</p>
+                  <div class="project-carousel-tech">
+                    ${project.tech.map(tech => `
+                      <span class="project-carousel-tech-badge">${tech}</span>
+                    `).join('')}
+                  </div>
+                  <div class="project-carousel-outcome">
+                    <i class="fas fa-check-circle"></i>
+                    <strong>Outcome:</strong> ${project.outcome}
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        
+        <button class="carousel-nav carousel-nav-right" aria-label="Next project">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+      
+      <div class="carousel-controls">
+        <div class="carousel-dots">
+          ${projects.map((_, index) => `
+            <button class="carousel-dot ${index === 0 ? 'active' : ''}" data-index="${index}" aria-label="Go to project ${index + 1}"></button>
+          `).join('')}
+        </div>
+        <button class="carousel-play-pause" aria-label="Pause carousel">
+          <i class="fas fa-pause"></i>
+        </button>
+      </div>
+    </div>
+  `;
+
+  // Replace existing content
+  projectsSection.innerHTML = carouselHTML;
+
+  // Carousel functionality
+  const track = document.querySelector('.projects-carousel-track');
+  const cards = document.querySelectorAll('.project-carousel-card');
+  const dots = document.querySelectorAll('.carousel-dot');
+  const prevBtn = document.querySelector('.carousel-nav-left');
+  const nextBtn = document.querySelector('.carousel-nav-right');
+  const playPauseBtn = document.querySelector('.carousel-play-pause');
+  
+  let currentIndex = 0;
+  let isPlaying = true;
+  let autoplayInterval;
+  const totalProjects = projects.length;
+
+  // Calculate card width + gap
+  function getCardWidth() {
+    const card = cards[0];
+    const style = window.getComputedStyle(card);
+    const marginRight = parseFloat(style.marginRight);
+    return card.offsetWidth + marginRight;
+  }
+
+  // Update carousel position
+  function updateCarousel(smooth = true) {
+    const cardWidth = getCardWidth();
+    const offset = -currentIndex * cardWidth;
+    track.style.transition = smooth ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none';
+    track.style.transform = `translateX(${offset}px)`;
+    
+    // Update dots
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+  }
+
+  // Navigate to specific index
+  function goToSlide(index) {
+    currentIndex = index;
+    updateCarousel();
+  }
+
+  // Next slide
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalProjects;
+    updateCarousel();
+  }
+
+  // Previous slide
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalProjects) % totalProjects;
+    updateCarousel();
+  }
+
+  // Autoplay
+  function startAutoplay() {
+    isPlaying = true;
+    playPauseBtn.querySelector('i').className = 'fas fa-pause';
+    autoplayInterval = setInterval(nextSlide, 4000);
+  }
+
+  function stopAutoplay() {
+    isPlaying = false;
+    playPauseBtn.querySelector('i').className = 'fas fa-play';
+    clearInterval(autoplayInterval);
+  }
+
+  // Event listeners
+  prevBtn.addEventListener('click', () => {
+    prevSlide();
+    if (isPlaying) {
+      stopAutoplay();
+      startAutoplay();
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    nextSlide();
+    if (isPlaying) {
+      stopAutoplay();
+      startAutoplay();
+    }
+  });
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const index = parseInt(dot.dataset.index);
+      goToSlide(index);
+      if (isPlaying) {
+        stopAutoplay();
+        startAutoplay();
+      }
+    });
+  });
+
+  playPauseBtn.addEventListener('click', () => {
+    if (isPlaying) {
+      stopAutoplay();
+    } else {
+      startAutoplay();
+    }
+  });
+
+  // Pause on hover
+  const carouselContainer = document.querySelector('.projects-carousel-full');
+  carouselContainer.addEventListener('mouseenter', () => {
+    if (isPlaying) {
+      clearInterval(autoplayInterval);
+    }
+  });
+
+  carouselContainer.addEventListener('mouseleave', () => {
+    if (isPlaying) {
+      autoplayInterval = setInterval(nextSlide, 4000);
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      prevSlide();
+      if (isPlaying) {
+        stopAutoplay();
+        startAutoplay();
+      }
+    } else if (e.key === 'ArrowRight') {
+      nextSlide();
+      if (isPlaying) {
+        stopAutoplay();
+        startAutoplay();
+      }
+    }
+  });
+
+  // Touch support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  carouselContainer.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  carouselContainer.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    if (touchEndX < touchStartX - 50) {
+      nextSlide();
+      if (isPlaying) {
+        stopAutoplay();
+        startAutoplay();
+      }
+    }
+    if (touchEndX > touchStartX + 50) {
+      prevSlide();
+      if (isPlaying) {
+        stopAutoplay();
+        startAutoplay();
+      }
+    }
+  }
+
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    updateCarousel(false);
+  });
+
+  // Start autoplay
+  startAutoplay();
+
+  // Initial update
+  updateCarousel(false);
+}
+
+// Initialize carousel when DOM is loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', createProjectCarousel);
+} else {
+  createProjectCarousel();
+}
+
+// =====================
 // Console Message
 // =====================
 console.log('%c🚀 Portfolio Website Loaded Successfully!', 'color: #667eea; font-size: 16px; font-weight: bold;');
