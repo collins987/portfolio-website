@@ -280,11 +280,6 @@ section {
   50% { opacity: 0.8; }
 }
 
-@keyframes slideCarousel {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-100% - 2rem)); }
-}
-
 /* ===================================
    STATS SECTION
 =================================== */
@@ -474,7 +469,7 @@ section {
 }
 
 /* ===================================
-   PROJECTS SECTION - ANIMATED CAROUSEL
+   PROJECTS SECTION - FULL WIDTH CAROUSEL
 =================================== */
 .projects-section {
   background: var(--light-bg);
@@ -482,17 +477,14 @@ section {
   overflow: hidden;
 }
 
-/* Hide old project rows */
 .project-row {
   display: none;
 }
 
-/* Carousel Wrapper */
 .projects-carousel-wrapper {
   width: 100%;
 }
 
-/* Full-width carousel container */
 .projects-carousel-full {
   position: relative;
   width: 100%;
@@ -514,16 +506,14 @@ section {
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Project Cards - Wider */
 .project-carousel-card {
   flex: 0 0 550px;
   background: var(--white);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-md);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  height: auto;
 }
 
 .project-carousel-card:hover {
@@ -531,7 +521,6 @@ section {
   box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
 }
 
-/* Card Image */
 .project-carousel-image {
   position: relative;
   height: 320px;
@@ -550,7 +539,6 @@ section {
   transform: scale(1.1);
 }
 
-/* Badge */
 .project-carousel-badge {
   position: absolute;
   top: 20px;
@@ -566,7 +554,6 @@ section {
   z-index: 2;
 }
 
-/* Overlay with Links */
 .project-carousel-overlay {
   position: absolute;
   top: 0;
@@ -610,7 +597,6 @@ section {
   color: var(--white);
 }
 
-/* Card Content */
 .project-carousel-content {
   padding: 2rem;
 }
@@ -665,7 +651,6 @@ section {
   margin-right: 0.5rem;
 }
 
-/* Navigation Buttons */
 .carousel-nav {
   width: 60px;
   height: 60px;
@@ -695,7 +680,6 @@ section {
   transform: scale(0.95);
 }
 
-/* Carousel Controls */
 .carousel-controls {
   display: flex;
   justify-content: center;
@@ -752,119 +736,6 @@ section {
   box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
 }
 
-/* Dark Mode Support */
-body.dark-mode .project-carousel-card {
-  background-color: var(--dark-bg);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-body.dark-mode .project-carousel-title {
-  color: #f1f5f9;
-}
-
-body.dark-mode .project-carousel-description {
-  color: #94a3b8;
-}
-
-body.dark-mode .project-carousel-tech-badge {
-  background-color: #1e293b;
-  color: #94a3b8;
-}
-
-body.dark-mode .project-carousel-tech-badge:hover {
-  background: var(--gradient-primary);
-  color: var(--white);
-}
-
-body.dark-mode .carousel-nav {
-  background: #1e293b;
-  border-color: var(--primary-color);
-}
-
-body.dark-mode .carousel-nav:hover {
-  background: var(--gradient-primary);
-}
-
-/* Responsive Design */
-@media (max-width: 1400px) {
-  .project-carousel-card {
-    flex: 0 0 500px;
-  }
-}
-
-@media (max-width: 1200px) {
-  .project-carousel-card {
-    flex: 0 0 450px;
-  }
-}
-
-@media (max-width: 992px) {
-  .projects-carousel-full {
-    gap: 1rem;
-  }
-
-  .project-carousel-card {
-    flex: 0 0 400px;
-  }
-
-  .carousel-nav {
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
-  }
-
-  .project-carousel-image {
-    height: 260px;
-  }
-}
-
-@media (max-width: 768px) {
-  .projects-carousel-full {
-    flex-direction: column;
-    padding: 2rem 0;
-  }
-
-  .carousel-nav {
-    display: none;
-  }
-
-  .projects-carousel-container {
-    padding: 0 1rem;
-  }
-
-  .project-carousel-card {
-    flex: 0 0 340px;
-  }
-
-  .project-carousel-title {
-    font-size: 1.3rem;
-  }
-
-  .project-carousel-image {
-    height: 220px;
-  }
-
-  .carousel-controls {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .project-carousel-card {
-    flex: 0 0 300px;
-  }
-
-  .project-carousel-content {
-    padding: 1.5rem;
-  }
-
-  .project-link {
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
-  }
-}
 /* ===================================
    EXPLORING SECTION
 =================================== */
@@ -929,7 +800,6 @@ body.dark-mode .carousel-nav:hover {
   margin-bottom: 1.5rem;
 }
 
-/* Status Badges */
 .status-badge {
   display: inline-block;
   padding: 0.4rem 1rem;
@@ -955,7 +825,7 @@ body.dark-mode .carousel-nav:hover {
 }
 
 /* ===================================
-   TIMELINE
+   JOURNEY/TIMELINE SECTION
 =================================== */
 .journey-section {
   background: var(--white);
@@ -1049,6 +919,7 @@ body.dark-mode .carousel-nav:hover {
 
 .timeline-item.right .timeline-icon {
   left: -30px;
+  right: auto;
 }
 
 /* ===================================
@@ -1141,73 +1012,7 @@ body.dark-mode .carousel-nav:hover {
 }
 
 /* ===================================
-   RESPONSIVE DESIGN
-=================================== */
-@media (max-width: 992px) {
-  .hero-title {
-    font-size: 3rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.5rem;
-  }
-  
-  .section-title {
-    font-size: 2rem;
-  }
-  
-  .timeline::before {
-    left: 30px;
-  }
-  
-  .timeline-item {
-    width: 100%;
-    padding-left: 70px;
-    padding-right: 25px;
-  }
-  
-  .timeline-item.right {
-    left: 0;
-  }
-  
-  .timeline-icon {
-    left: 0 !important;
-  }
-
-  .project-carousel-card {
-    flex: 0 0 380px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.5rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.3rem;
-  }
-  
-  .hero-description {
-    font-size: 1rem;
-  }
-  
-  .hero-buttons .btn {
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-  }
-
-  .project-carousel-card {
-    flex: 0 0 320px;
-  }
-
-  .project-carousel-title {
-    font-size: 1.3rem;
-  }
-}
-
-/* ===================================
-   DARK MODE STYLES
+   DARK MODE
 =================================== */
 body.dark-mode {
   background-color: var(--dark-bg);
@@ -1266,64 +1071,136 @@ body.dark-mode .project-carousel-tech-badge:hover {
   color: var(--white);
 }
 
+body.dark-mode .carousel-nav {
+  background: #1e293b;
+  border-color: var(--primary-color);
+}
+
+body.dark-mode .carousel-nav:hover {
+  background: var(--gradient-primary);
+}
+
+body.dark-mode .timeline-icon {
+  border-color: #1e293b;
+}
+
 /* ===================================
-   MOBILE RESPONSIVE FIXES
-   Add these to your main.css file (they will override existing styles)
+   RESPONSIVE - TABLET (max-width: 992px)
 =================================== */
-
-/* Fix Timeline Issues on Mobile */
-@media (max-width: 768px) {
-  /* Journey/Timeline Section Fixes */
-  .journey-section {
-    padding: 4rem 0;
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 3rem;
   }
-
-  .timeline {
-    padding: 1rem 0;
+  
+  .hero-subtitle {
+    font-size: 1.5rem;
   }
-
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  /* Timeline adjustments */
   .timeline::before {
-    left: 20px;
+    left: 35px;
+    margin-left: 0;
     width: 3px;
   }
-
+  
   .timeline-item {
     width: 100%;
-    padding-left: 60px;
-    padding-right: 15px;
+    padding-left: 80px;
+    padding-right: 20px;
   }
-
+  
   .timeline-item.left,
   .timeline-item.right {
     left: 0 !important;
   }
-
+  
   .timeline-icon {
-    left: 0 !important;
+    left: 5px !important;
     right: auto !important;
+  }
+
+  .project-carousel-card {
+    flex: 0 0 450px;
+  }
+
+  .projects-carousel-full {
+    gap: 1rem;
+  }
+
+  .carousel-nav {
     width: 50px;
     height: 50px;
     font-size: 1.2rem;
   }
+}
 
-  .timeline-content {
-    padding: 1.5rem;
+/* ===================================
+   RESPONSIVE - MOBILE (max-width: 768px)
+=================================== */
+@media (max-width: 768px) {
+  /* Global mobile fixes */
+  body {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
   }
 
-  .timeline-content h4 {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  section {
+    overflow-x: hidden;
+  }
+
+  html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  [class*="col-"] {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  /* Navigation */
+  #mainNav {
+    padding: 0.5rem 0;
+  }
+
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+
+  .brand-initial {
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
     font-size: 1.1rem;
   }
 
-  .timeline-content p {
-    font-size: 0.9rem;
+  .navbar-nav {
+    background: rgba(15, 23, 42, 0.98);
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 10px;
   }
 
-  .timeline-date {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.6rem;
+  .navbar-nav .nav-link {
+    padding: 0.7rem 1rem !important;
+    font-size: 0.95rem;
   }
 
-  /* Hero Section Mobile Fixes */
+  /* Hero Section */
   .hero-section {
     min-height: 100vh;
     padding: 100px 20px 20px;
@@ -1364,13 +1241,9 @@ body.dark-mode .project-carousel-tech-badge:hover {
     padding: 0.9rem 1.5rem !important;
     font-size: 0.95rem !important;
     margin: 0 !important;
+    min-height: 48px;
   }
 
-  .hero-buttons .btn.mr-3 {
-    margin-right: 0 !important;
-  }
-
-  /* Social Links Mobile */
   .hero-social {
     margin-top: 2rem !important;
     gap: 1rem;
@@ -1382,12 +1255,11 @@ body.dark-mode .project-carousel-tech-badge:hover {
     font-size: 1.1rem;
   }
 
-  /* Scroll Indicator */
   .scroll-indicator {
     display: none;
   }
 
-  /* Stats Section Mobile */
+  /* Stats Section */
   .stats-section {
     padding: 3rem 0 !important;
   }
@@ -1408,7 +1280,7 @@ body.dark-mode .project-carousel-tech-badge:hover {
     font-size: 0.8rem;
   }
 
-  /* About Section Mobile */
+  /* About Section */
   .about-section {
     padding: 4rem 0 !important;
   }
@@ -1423,6 +1295,7 @@ body.dark-mode .project-carousel-tech-badge:hover {
 
   .lead-text {
     font-size: 1rem;
+    line-height: 1.7;
   }
 
   .highlight-box {
@@ -1466,7 +1339,7 @@ body.dark-mode .project-carousel-tech-badge:hover {
     font-size: 0.85rem;
   }
 
-  /* Projects Section Mobile */
+  /* Projects Section */
   .projects-section {
     padding: 4rem 0 !important;
   }
@@ -1480,7 +1353,90 @@ body.dark-mode .project-carousel-tech-badge:hover {
     padding: 0 15px;
   }
 
-  /* Exploring Section Mobile */
+  .projects-carousel-full {
+    flex-direction: column;
+    padding: 2rem 0;
+  }
+
+  .carousel-nav {
+    display: none;
+  }
+
+  .projects-carousel-container {
+    padding: 0 1rem;
+  }
+
+  .project-carousel-card {
+    flex: 0 0 340px;
+  }
+
+  .project-carousel-title {
+    font-size: 1.3rem;
+  }
+
+  .project-carousel-image {
+    height: 220px;
+  }
+
+  .project-carousel-content {
+    padding: 1.5rem;
+  }
+
+  .carousel-controls {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* Timeline Section */
+  .journey-section {
+    padding: 4rem 0;
+  }
+
+  .timeline {
+    padding: 1rem 0;
+  }
+
+  .timeline::before {
+    left: 27px;
+    width: 2px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 65px;
+    padding-right: 15px;
+  }
+
+  .timeline-icon {
+    left: 2px !important;
+    right: auto !important;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    border-width: 3px;
+  }
+
+  .timeline-content {
+    padding: 1.2rem;
+  }
+
+  .timeline-content h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-content p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .timeline-date {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Exploring Section */
   .exploring-section {
     padding: 4rem 0 !important;
   }
@@ -1505,7 +1461,7 @@ body.dark-mode .project-carousel-tech-badge:hover {
     font-size: 0.85rem;
   }
 
-  /* Contact Section Mobile */
+  /* Contact Section */
   .contact-section {
     padding: 4rem 0 !important;
   }
@@ -1540,7 +1496,7 @@ body.dark-mode .project-carousel-tech-badge:hover {
     font-size: 1.1rem;
   }
 
-  /* Footer Mobile */
+  /* Footer */
   .footer-section {
     padding: 2rem 0 !important;
     text-align: center;
@@ -1555,53 +1511,38 @@ body.dark-mode .project-carousel-tech-badge:hover {
     font-size: 0.85rem;
   }
 
-  /* Navbar Mobile */
-  #mainNav {
-    padding: 0.5rem 0;
+  /* Touch targets */
+  a, button, .nav-link, .btn {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .navbar-brand {
-    font-size: 1.3rem;
-  }
-
-  .brand-initial {
-    width: 45px;
-    height: 45px;
-    line-height: 45px;
-    font-size: 1.1rem;
-  }
-
-  .navbar-nav {
-    background: rgba(15, 23, 42, 0.98);
-    padding: 1rem;
-    margin-top: 1rem;
-    border-radius: 10px;
-  }
-
-  .navbar-nav .nav-link {
-    padding: 0.7rem 1rem !important;
-    font-size: 0.95rem;
-  }
-
-  /* Scroll to Top Button Mobile */
-  .scroll-top-btn {
-    bottom: 20px;
-    right: 20px;
-    width: 45px;
-    height: 45px;
-    font-size: 1rem;
-  }
-
-  .dark-mode-toggle {
-    bottom: 20px;
-    left: 20px;
-    width: 45px;
-    height: 45px;
-    font-size: 1rem;
+  p {
+    line-height: 1.6;
   }
 }
 
-/* Extra Small Devices (iPhone SE, etc.) */
+/* ===================================
+   RESPONSIVE - SMALL MOBILE (max-width: 576px)
+=================================== */
+@media (max-width: 576px) {
+  .project-carousel-card {
+    flex: 0 0 300px;
+  }
+
+  .project-link {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+}
+
+/* ===================================
+   RESPONSIVE - EXTRA SMALL (max-width: 375px)
+=================================== */
 @media (max-width: 375px) {
   .hero-title {
     font-size: 1.8rem !important;
@@ -1620,14 +1561,32 @@ body.dark-mode .project-carousel-tech-badge:hover {
     font-size: 0.9rem !important;
   }
 
+  .timeline::before {
+    left: 22px;
+  }
+
   .timeline-item {
     padding-left: 55px;
+    padding-right: 10px;
   }
 
   .timeline-icon {
-    width: 45px;
-    height: 45px;
+    left: 0 !important;
+    width: 44px;
+    height: 44px;
     font-size: 1rem;
+  }
+
+  .timeline-content {
+    padding: 1rem;
+  }
+
+  .timeline-content h4 {
+    font-size: 1rem;
+  }
+
+  .timeline-content p {
+    font-size: 0.8rem;
   }
 
   .section-title {
@@ -1644,7 +1603,9 @@ body.dark-mode .project-carousel-tech-badge:hover {
   }
 }
 
-/* Landscape Orientation Fix */
+/* ===================================
+   RESPONSIVE - LANDSCAPE MODE
+=================================== */
 @media (max-width: 768px) and (orientation: landscape) {
   .hero-section {
     min-height: auto;
@@ -1674,40 +1635,9 @@ body.dark-mode .project-carousel-tech-badge:hover {
   }
 }
 
-/* Fix Container Overflow on Mobile */
-@media (max-width: 768px) {
-  .container {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  body {
-    overflow-x: hidden;
-  }
-
-  section {
-    overflow-x: hidden;
-  }
-
-  /* Prevent horizontal scroll */
-  html, body {
-    max-width: 100vw;
-    overflow-x: hidden;
-  }
-
-  /* Fix any full-width sections */
-  .row {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  [class*="col-"] {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-}
-
-/* iOS Safari Specific Fixes */
+/* ===================================
+   iOS SAFARI SPECIFIC FIXES
+=================================== */
 @supports (-webkit-touch-callout: none) {
   @media (max-width: 768px) {
     .hero-section {
@@ -1718,36 +1648,5 @@ body.dark-mode .project-carousel-tech-badge:hover {
       -webkit-appearance: none;
       border-radius: 50px;
     }
-  }
-}
-
-/* Improve Touch Targets for Mobile */
-@media (max-width: 768px) {
-  a, button, .nav-link, .btn {
-    min-height: 44px;
-    min-width: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hero-buttons .btn {
-    min-height: 48px;
-  }
-}
-
-/* Fix Text Readability on Mobile */
-@media (max-width: 768px) {
-  body {
-    font-size: 16px;
-    -webkit-text-size-adjust: 100%;
-  }
-
-  p {
-    line-height: 1.6;
-  }
-
-  .lead-text {
-    line-height: 1.7;
   }
 }
