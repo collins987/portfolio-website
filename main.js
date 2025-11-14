@@ -150,303 +150,245 @@ function ensureTimelineIcons() {
 }
 
 // =====================
-// PROJECT CAROUSEL
+// PROJECT CAROUSEL - FULL WIDTH WITH SIDE NAVIGATION
 // =====================
 function createProjectCarousel() {
-  const projectsSection = document.querySelector('.projects-section');
-  if (!projectsSection) return;
-  
+  const carouselTrack = document.getElementById('projectsCarousel');
+  if (!carouselTrack) return;
+
+  // Projects data
   const projects = [
     {
       title: 'Online Poll System',
       badge: 'Featured',
-      description: 'Production-ready voting platform with enterprise-grade security. Built with Django REST Framework, PostgreSQL, and Docker. Implemented database-level constraints to prevent duplicate votes and JWT authentication for secure access.',
+      tagline: 'Production-ready voting platform with enterprise-grade security',
+      problem: 'Organizations need secure, transparent voting systems that prevent fraud while maintaining user privacy.',
+      solution: 'Built with Django REST Framework, PostgreSQL, and Docker. Implemented database-level constraints to prevent duplicate votes and JWT authentication for secure access.',
       tech: ['Django', 'PostgreSQL', 'Docker', 'JWT', 'Gunicorn'],
       outcome: 'Production-deployed with 99.9% uptime, supporting concurrent voting sessions',
-      image: 'images/project-nexus.PNG',
-      github: 'https://github.com/collins987/',
-      demo: '#'
+      image: 'images/project-nexus.PNG'
     },
     {
       title: 'Azure Security Engineer Labs',
       badge: 'Security',
-      description: 'Enterprise cloud security in practice. Implemented just-in-time VM access, NSGs with least-privilege and Sentinel SIEM integration.',
+      tagline: 'Enterprise cloud security in practice',
+      problem: 'Cloud environments require layered security controls to protect against modern threats',
+      solution: 'Implemented just-in-time VM access, NSGs with least-privilege and Sentinel SIEM integration.',
       tech: ['Azure RBAC', 'Key Vault', 'Defender', 'Sentinel', 'ARM'],
       outcome: 'Demonstrated zero-trust patterns on Azure',
-      image: 'images/az500-labs.jpeg',
-      github: 'https://github.com/collins987/',
-      demo: '#'
+      image: 'images/az500-labs.jpeg'
     },
     {
       title: 'Doctor Consultation Application',
       badge: 'Full-Stack',
-      description: 'Real-time appointment booking with Firebase and RBAC. Mobile application for healthcare consultation with role-based access control.',
+      tagline: 'Real-time appointment booking with Firebase and RBAC',
+      problem: 'Healthcare providers need efficient appointment scheduling with role-based access control',
+      solution: 'Mobile application with Firebase real-time database and comprehensive RBAC implementation.',
       tech: ['Firebase', 'Java', 'Android', 'Gradle', 'RBAC'],
       outcome: 'Streamlined healthcare appointment scheduling with real-time updates',
-      image: 'images/doctor-app.jpeg',
-      github: 'https://github.com/collins987/',
-      demo: '#'
+      image: 'images/doctor-app.jpeg'
     },
     {
       title: 'Real-Time Chat Application',
       badge: 'MERN Stack',
-      description: 'Secure messaging platform with JWT & WebSocket connections for real-time communication. Full-stack application with modern architecture.',
+      tagline: 'Secure messaging platform with JWT & WebSocket connections',
+      problem: 'Users need secure, real-time communication with scalable architecture',
+      solution: 'Full-stack application with MongoDB, Express.js, React, and Node.js using WebSocket for real-time updates.',
       tech: ['MongoDB', 'Express.js', 'React', 'Node.js'],
       outcome: 'Real-time messaging with secure authentication and responsive design',
-      image: 'images/chat-app.jpeg',
-      github: 'https://github.com/collins987/',
-      demo: '#'
+      image: 'images/chat-app.jpeg'
     },
     {
       title: 'Microsoft SC-900 Labs',
       badge: 'Compliance',
-      description: 'Hands-on labs on security, compliance and identity with Microsoft cloud services. Comprehensive coverage of Microsoft security solutions.',
+      tagline: 'Hands-on labs on security, compliance and identity',
+      problem: 'Organizations need practical understanding of Microsoft security and compliance solutions',
+      solution: 'Comprehensive hands-on labs covering Entra ID, Defender, and Purview with real-world scenarios.',
       tech: ['Entra ID', 'Defender', 'Purview'],
       outcome: 'Demonstrated compliance and security best practices on Microsoft platform',
-      image: 'images/sc900-labs.jpeg',
-      github: 'https://github.com/collins987/',
-      demo: '#'
+      image: 'images/sc900-labs.jpeg'
     }
   ];
 
-  const carouselHTML = `
-    <div class="projects-carousel-wrapper">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center mb-5">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="title-underline"></div>
-            <p class="section-subtitle">From problem identification to production deployment</p>
+  // Build carousel HTML
+  const carouselHTML = projects.map((project) => `
+    <article class="project-carousel-card">
+      <div class="project-carousel-wrapper">
+        <div class="project-carousel-image">
+          <img src="${project.image}" alt="${project.title}" 
+               onerror="this.src='https://via.placeholder.com/400x300?text=${encodeURIComponent(project.title)}'">
+          <span class="project-carousel-badge">${project.badge}</span>
+        </div>
+        <div class="project-carousel-content">
+          <h3 class="project-carousel-title">${project.title}</h3>
+          <p class="project-carousel-tagline">${project.tagline}</p>
+          
+          <div class="project-detail">
+            <h5><i class="fas fa-exclamation-circle"></i> The Problem</h5>
+            <p>${project.problem}</p>
+          </div>
+          
+          <div class="project-detail">
+            <h5><i class="fas fa-cogs"></i> The Solution</h5>
+            <p>${project.solution}</p>
+          </div>
+          
+          <div class="project-carousel-tech">
+            ${project.tech.map(tech => `<span class="project-carousel-tech-badge">${tech}</span>`).join('')}
+          </div>
+          <div class="project-carousel-outcome">
+            <i class="fas fa-check-circle"></i>
+            <strong>Outcome:</strong> ${project.outcome}
           </div>
         </div>
       </div>
-      
-      <div class="projects-carousel-full">
-        <button class="carousel-nav carousel-nav-left" aria-label="Previous project">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        
-        <div class="projects-carousel-container">
-          <div class="projects-carousel-track">
-            ${projects.map((project, index) => `
-              <div class="project-carousel-card" data-index="${index}">
-                <div class="project-carousel-image">
-                  <img src="${project.image}" alt="${project.title}" 
-                       onerror="this.src='https://via.placeholder.com/550x320?text=${encodeURIComponent(project.title)}'">
-                  <span class="project-carousel-badge">${project.badge}</span>
-                  <div class="project-carousel-overlay">
-                    <div class="project-carousel-links">
-                      <a href="${project.github}" target="_blank" class="project-link" title="View on GitHub">
-                        <i class="fab fa-github"></i>
-                      </a>
-                      <a href="${project.demo}" target="_blank" class="project-link" title="Live Demo">
-                        <i class="fas fa-external-link-alt"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="project-carousel-content">
-                  <h3 class="project-carousel-title">${project.title}</h3>
-                  <p class="project-carousel-description">${project.description}</p>
-                  <div class="project-carousel-tech">
-                    ${project.tech.map(tech => `
-                      <span class="project-carousel-tech-badge">${tech}</span>
-                    `).join('')}
-                  </div>
-                  <div class="project-carousel-outcome">
-                    <i class="fas fa-check-circle"></i>
-                    <strong>Outcome:</strong> ${project.outcome}
-                  </div>
-                </div>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-        
-        <button class="carousel-nav carousel-nav-right" aria-label="Next project">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-      </div>
-      
-      <div class="carousel-controls">
-        <div class="carousel-dots">
-          ${projects.map((_, index) => `
-            <button class="carousel-dot ${index === 0 ? 'active' : ''}" data-index="${index}" aria-label="Go to project ${index + 1}"></button>
-          `).join('')}
-        </div>
-        <button class="carousel-play-pause" aria-label="Pause carousel">
-          <i class="fas fa-pause"></i>
-        </button>
-      </div>
-    </div>
-  `;
+    </article>
+  `).join('');
 
-  projectsSection.innerHTML = carouselHTML;
+  carouselTrack.innerHTML = carouselHTML;
 
-  // Carousel functionality
+  // Get elements
   const track = document.querySelector('.projects-carousel-track');
-  const cards = document.querySelectorAll('.project-carousel-card');
-  const dots = document.querySelectorAll('.carousel-dot');
-  const prevBtn = document.querySelector('.carousel-nav-left');
-  const nextBtn = document.querySelector('.carousel-nav-right');
-  const playPauseBtn = document.querySelector('.carousel-play-pause');
-  
-  let currentIndex = 0;
+  const container = document.querySelector('.projects-carousel-container');
+  const leftBtn = document.querySelector('.projects-nav-left');
+  const rightBtn = document.querySelector('.projects-nav-right');
+
+  if (!track || !container || !leftBtn || !rightBtn) return;
+
+  // Smooth scroll navigation with proper element reference
+  const scrollAmount = 900;
+  let autoScrollInterval = null;
   let isPlaying = true;
-  let autoplayInterval;
-  const totalProjects = projects.length;
+  const AUTO_SCROLL_INTERVAL = 3000; // 3 seconds
+  const AUTO_SCROLL_PAUSE = 3000; // 3 second pause before next
 
-  function getCardWidth() {
-    const card = cards[0];
-    const style = window.getComputedStyle(card);
-    const marginRight = parseFloat(style.marginRight);
-    return card.offsetWidth + marginRight;
-  }
-
-  function updateCarousel(smooth = true) {
-    const cardWidth = getCardWidth();
-    const offset = -currentIndex * cardWidth;
-    track.style.transition = smooth ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none';
-    track.style.transform = `translateX(${offset}px)`;
-    
-    dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentIndex);
+  function scrollLeft() {
+    track.scrollBy({
+      left: -scrollAmount,
+      behavior: 'smooth'
     });
   }
 
-  function goToSlide(index) {
-    currentIndex = index;
-    updateCarousel();
+  function scrollRight() {
+    track.scrollBy({
+      left: scrollAmount,
+      behavior: 'smooth'
+    });
   }
 
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % totalProjects;
-    updateCarousel();
-  }
+  // Auto-scroll to next item, then pause before repeating
+  function autoScroll() {
+    if (!isPlaying) return;
 
-  function prevSlide() {
-    currentIndex = (currentIndex - 1 + totalProjects) % totalProjects;
-    updateCarousel();
-  }
+    scrollRight();
 
-  function startAutoplay() {
-    isPlaying = true;
-    playPauseBtn.querySelector('i').className = 'fas fa-pause';
-    autoplayInterval = setInterval(nextSlide, 4000);
-  }
-
-  function stopAutoplay() {
-    isPlaying = false;
-    playPauseBtn.querySelector('i').className = 'fas fa-play';
-    clearInterval(autoplayInterval);
-  }
-
-  // Event listeners
-  prevBtn.addEventListener('click', () => {
-    prevSlide();
-    if (isPlaying) {
-      stopAutoplay();
-      startAutoplay();
-    }
-  });
-
-  nextBtn.addEventListener('click', () => {
-    nextSlide();
-    if (isPlaying) {
-      stopAutoplay();
-      startAutoplay();
-    }
-  });
-
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      const index = parseInt(dot.dataset.index);
-      goToSlide(index);
+    // Pause for 3 seconds before next scroll
+    clearInterval(autoScrollInterval);
+    setTimeout(() => {
       if (isPlaying) {
-        stopAutoplay();
-        startAutoplay();
+        autoScrollInterval = setInterval(autoScroll, AUTO_SCROLL_INTERVAL + AUTO_SCROLL_PAUSE);
       }
-    });
+    }, AUTO_SCROLL_PAUSE);
+  }
+
+  // Start auto-scroll on load
+  autoScrollInterval = setInterval(autoScroll, AUTO_SCROLL_INTERVAL + AUTO_SCROLL_PAUSE);
+
+  // Pause/Resume on manual interaction
+  function pauseAutoScroll() {
+    clearInterval(autoScrollInterval);
+    isPlaying = false;
+  }
+
+  function resumeAutoScroll() {
+    if (!isPlaying) {
+      isPlaying = true;
+      autoScrollInterval = setInterval(autoScroll, AUTO_SCROLL_INTERVAL + AUTO_SCROLL_PAUSE);
+    }
+  }
+
+  leftBtn.addEventListener('click', () => {
+    pauseAutoScroll();
+    scrollLeft();
+    setTimeout(resumeAutoScroll, 2000); // Resume after 2 seconds
   });
 
-  playPauseBtn.addEventListener('click', () => {
-    if (isPlaying) {
-      stopAutoplay();
+  rightBtn.addEventListener('click', () => {
+    pauseAutoScroll();
+    scrollRight();
+    setTimeout(resumeAutoScroll, 2000); // Resume after 2 seconds
+  });
+
+  // Update button visibility based on scroll position
+  function updateButtonVisibility() {
+    const scrollLeft = track.scrollLeft;
+    const maxScroll = track.scrollWidth - container.clientWidth;
+
+    // Left button
+    if (scrollLeft <= 5) {
+      leftBtn.style.opacity = '0.4';
+      leftBtn.style.pointerEvents = 'none';
+      leftBtn.style.cursor = 'not-allowed';
     } else {
-      startAutoplay();
+      leftBtn.style.opacity = '1';
+      leftBtn.style.pointerEvents = 'auto';
+      leftBtn.style.cursor = 'pointer';
     }
-  });
 
-  // Pause on hover
-  const carouselContainer = document.querySelector('.projects-carousel-full');
-  carouselContainer.addEventListener('mouseenter', () => {
-    if (isPlaying) {
-      clearInterval(autoplayInterval);
+    // Right button
+    if (scrollLeft >= maxScroll - 5) {
+      rightBtn.style.opacity = '0.4';
+      rightBtn.style.pointerEvents = 'none';
+      rightBtn.style.cursor = 'not-allowed';
+    } else {
+      rightBtn.style.opacity = '1';
+      rightBtn.style.pointerEvents = 'auto';
+      rightBtn.style.cursor = 'pointer';
     }
-  });
+  }
 
-  carouselContainer.addEventListener('mouseleave', () => {
-    if (isPlaying) {
-      autoplayInterval = setInterval(nextSlide, 4000);
-    }
-  });
+  // Listen to scroll events
+  track.addEventListener('scroll', updateButtonVisibility);
+  window.addEventListener('resize', updateButtonVisibility);
+
+  // Initialize button states after content loads
+  setTimeout(updateButtonVisibility, 200);
 
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') {
-      prevSlide();
-      if (isPlaying) {
-        stopAutoplay();
-        startAutoplay();
-      }
+      pauseAutoScroll();
+      scrollLeft();
+      setTimeout(resumeAutoScroll, 2000);
     } else if (e.key === 'ArrowRight') {
-      nextSlide();
-      if (isPlaying) {
-        stopAutoplay();
-        startAutoplay();
-      }
+      pauseAutoScroll();
+      scrollRight();
+      setTimeout(resumeAutoScroll, 2000);
     }
   });
 
-  // Touch support for mobile
+  // Touch swipe support
   let touchStartX = 0;
-  let touchEndX = 0;
+  track.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
 
-  carouselContainer.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  });
-
-  carouselContainer.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  });
-
-  function handleSwipe() {
-    if (touchEndX < touchStartX - 50) {
-      nextSlide();
-      if (isPlaying) {
-        stopAutoplay();
-        startAutoplay();
-      }
+  track.addEventListener('touchend', (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      pauseAutoScroll();
+      if (diff > 0) scrollRight();
+      else scrollLeft();
+      setTimeout(resumeAutoScroll, 2000);
     }
-    if (touchEndX > touchStartX + 50) {
-      prevSlide();
-      if (isPlaying) {
-        stopAutoplay();
-        startAutoplay();
-      }
-    }
-  }
+  }, { passive: true });
 
-  // Handle window resize
-  window.addEventListener('resize', () => {
-    updateCarousel(false);
-  });
-
-  // Start autoplay
-  startAutoplay();
-  updateCarousel(false);
+  // Pause on mouse hover
+  track.addEventListener('mouseenter', pauseAutoScroll);
+  track.addEventListener('mouseleave', resumeAutoScroll);
 }
+
 
 // =====================
 // MOBILE MENU CLOSE ON CLICK

@@ -469,271 +469,367 @@ section {
 }
 
 /* ===================================
-   PROJECTS SECTION - FULL WIDTH CAROUSEL
+   PROJECTS SECTION
 =================================== */
 .projects-section {
   background: var(--light-bg);
   padding: 6rem 0;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
 }
 
-.project-row {
-  display: none;
-}
-
+/* Carousel Container */
 .projects-carousel-wrapper {
-  width: 100%;
-}
-
-.projects-carousel-full {
   position: relative;
   width: 100%;
-  padding: 3rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 100px;
   display: flex;
   align-items: center;
-  gap: 2rem;
+  justify-content: center;
 }
 
 .projects-carousel-container {
-  flex: 1;
+  width: 100%;
   overflow: hidden;
-  padding: 0 2rem;
+  position: relative;
+  border-radius: 20px;
 }
 
 .projects-carousel-track {
+  position: relative;
+  width: 100%;
   display: flex;
   gap: 2rem;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
 }
 
+.projects-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Project Carousel Card */
 .project-carousel-card {
-  flex: 0 0 550px;
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 900px;
   background: var(--white);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  scroll-snap-align: center;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+  will-change: transform, opacity;
+  display: flex;
+  flex-direction: column;
+  height: 550px;
+}
+
+/* Card Layout - Side by side */
+.project-carousel-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2rem;
+  padding: 1.5rem;
+  align-items: stretch;
+  height: 100%;
+  min-height: auto;
 }
 
 .project-carousel-card:hover {
-  transform: translateY(-15px) scale(1.03);
-  box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
 }
 
+/* Image Section - Match content height */
 .project-carousel-image {
   position: relative;
-  height: 320px;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-  background: linear-gradient(135deg, #667eea22, #764ba222);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+  border-radius: 15px;
+  flex-shrink: 0;
 }
 
 .project-carousel-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
+  object-fit: contain;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  padding: 1rem;
 }
 
 .project-carousel-card:hover .project-carousel-image img {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .project-carousel-badge {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  padding: 0.6rem 1.3rem;
+  top: 15px;
+  right: 15px;
   background: var(--white);
   color: var(--primary-color);
+  padding: 0.6rem 1.2rem;
   border-radius: 50px;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  letter-spacing: 0.6px;
   z-index: 2;
 }
 
-.project-carousel-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(102, 126, 234, 0.95);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.project-carousel-card:hover .project-carousel-overlay {
-  opacity: 1;
-}
-
-.project-carousel-links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.project-link {
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--white);
-  border-radius: 50%;
-  color: var(--primary-color);
-  font-size: 1.5rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-}
-
-.project-link:hover {
-  transform: scale(1.15) rotate(5deg);
-  background: var(--primary-color);
-  color: var(--white);
-}
-
+/* Content Section */
 .project-carousel-content {
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  overflow: hidden;
+  padding: 0;
+  height: 100%;
 }
 
 .project-carousel-title {
-  font-size: 1.6rem;
-  margin-bottom: 0.8rem;
+  font-size: 1.9rem;
+  font-weight: 800;
   color: var(--text-dark);
+  line-height: 1.2;
+  margin: 0 0 0.3rem 0;
 }
 
-.project-carousel-description {
+.project-carousel-tagline {
+  font-size: 1.05rem;
   color: var(--text-light);
-  font-size: 0.95rem;
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
+  font-weight: 500;
+  margin: 0 0 0.4rem 0;
 }
 
+/* Problem & Solution */
+.project-detail {
+  margin: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.project-detail:last-of-type {
+  border-bottom: none;
+}
+
+.project-detail h5 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.project-detail h5 i {
+  color: var(--primary-color);
+  font-size: 0.8rem;
+}
+
+.project-detail p {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0.2rem 0 0 0;
+}
+
+
+
+/* Tech Stack */
 .project-carousel-tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  gap: 0.4rem;
+  margin: 0.4rem 0;
 }
 
 .project-carousel-tech-badge {
-  padding: 0.5rem 1rem;
-  background: rgba(102, 126, 234, 0.1);
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
   color: var(--primary-color);
+  border: 1px solid rgba(102, 126, 234, 0.3);
   border-radius: 50px;
   font-size: 0.85rem;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
 .project-carousel-tech-badge:hover {
   background: var(--gradient-primary);
   color: var(--white);
+  border-color: var(--primary-color);
   transform: translateY(-2px);
 }
 
+/* Outcome */
 .project-carousel-outcome {
-  padding: 1rem;
+  padding: 0.7rem 1rem;
   background: rgba(34, 197, 94, 0.1);
   border-left: 4px solid #22c55e;
   border-radius: 8px;
   font-size: 0.9rem;
-  line-height: 1.6;
+  line-height: 1.4;
+  color: var(--text-dark);
+  font-weight: 500;
+  margin: 0.3rem 0 0 0;
 }
 
 .project-carousel-outcome i {
   color: #22c55e;
-  margin-right: 0.5rem;
+  margin-right: 0.8rem;
 }
 
-.carousel-nav {
-  width: 60px;
-  height: 60px;
+/* Side Navigation Buttons */
+.projects-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 65px;
+  height: 65px;
   background: var(--white);
-  border: 2px solid var(--primary-color);
+  border: 2.5px solid var(--primary-color);
   border-radius: 50%;
   color: var(--primary-color);
   font-size: 1.5rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
-  flex-shrink: 0;
-  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+  z-index: 20;
+  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.25);
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.carousel-nav:hover {
+.projects-nav-btn:hover {
   background: var(--gradient-primary);
   color: var(--white);
-  transform: scale(1.1);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  transform: translateY(-50%) scale(1.12);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.35);
 }
 
-.carousel-nav:active {
-  transform: scale(0.95);
+.projects-nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
 }
 
-.carousel-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  margin-top: 2rem;
+.projects-nav-left {
+  left: 0;
 }
 
-.carousel-dots {
-  display: flex;
-  gap: 0.8rem;
+.projects-nav-right {
+  right: 0;
 }
 
-.carousel-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(102, 126, 234, 0.3);
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0;
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .projects-carousel-wrapper {
+    padding: 0 60px;
+  }
+  
+  .project-carousel-wrapper {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  
+  .project-carousel-image {
+    height: 300px;
+  }
+  
+  .project-carousel-content {
+    max-height: none;
+  }
+  
+  .projects-nav-btn {
+    width: 55px;
+    height: 55px;
+    font-size: 1.3rem;
+  }
 }
 
-.carousel-dot:hover {
-  background: rgba(102, 126, 234, 0.6);
-  transform: scale(1.2);
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 4rem 0;
+  }
+  
+  .projects-carousel-wrapper {
+    padding: 0 20px;
+  }
+  
+  .project-carousel-card {
+    max-width: 100%;
+  }
+  
+  .project-carousel-wrapper {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .project-carousel-image {
+    height: 250px;
+  }
+  
+  .project-carousel-title {
+    font-size: 1.4rem;
+  }
+  
+  .project-detail p {
+    font-size: 0.8rem;
+  }
+  
+  .projects-nav-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  
+  .projects-nav-left {
+    left: 10px;
+  }
+  
+  .projects-nav-right {
+    right: 10px;
+  }
 }
 
-.carousel-dot.active {
-  background: var(--primary-color);
-  width: 32px;
-  border-radius: 6px;
-}
-
-.carousel-play-pause {
-  width: 45px;
-  height: 45px;
-  background: var(--gradient-primary);
-  border: none;
-  border-radius: 50%;
-  color: var(--white);
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-}
-
-.carousel-play-pause:hover {
-  transform: scale(1.15);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
+@media (max-width: 480px) {
+  .projects-section {
+    padding: 3rem 0;
+  }
+  
+  .projects-carousel-wrapper {
+    padding: 0 15px;
+  }
+  
+  .project-carousel-image {
+    height: 240px;
+  }
+  
+  .project-carousel-content {
+    padding: 1.2rem;
+  }
+  
+  .project-carousel-title {
+    font-size: 1.3rem;
+  }
+  
+  .projects-nav-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
+  }
 }
 
 /* ===================================
@@ -1346,6 +1442,38 @@ body.dark-mode .timeline-icon {
     padding: 4rem 0 !important;
   }
 
+  .project-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .project-title {
+    font-size: 1.5rem;
+  }
+
+  .project-tagline {
+    font-size: 1rem;
+  }
+
+  .project-detail h5 {
+    font-size: 1rem;
+  }
+
+  .project-detail p {
+    font-size: 0.9rem;
+  }
+
+  .tech-badge {
+    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .project-outcome {
+    font-size: 0.9rem;
+    padding: 0.8rem 1.2rem;
+  }
+
   .section-title {
     font-size: 1.8rem !important;
   }
@@ -1764,4 +1892,55 @@ body.dark-mode .timeline-icon {
     height: 44px !important;
     font-size: 1rem !important;
   }
+}
+
+/* ============================================
+   AUTO-SCROLL CAROUSEL + CENTER FADE ANIMATION
+=============================================== */
+
+/* Reduce vertical height */
+.projects-section {
+  padding: 3rem 0 !important;
+}
+
+/* Dark Mode Support for Project Carousel */
+body.dark-mode .project-carousel-card {
+  background: #1e293b;
+}
+
+body.dark-mode .project-carousel-title,
+body.dark-mode .project-detail h5 {
+  color: #f1f5f9;
+}
+
+body.dark-mode .project-carousel-tagline,
+body.dark-mode .project-detail p {
+  color: #cbd5e1;
+}
+
+body.dark-mode .project-detail {
+  border-bottom-color: #334155;
+}
+
+body.dark-mode .project-carousel-tech-badge {
+  background: rgba(102, 126, 234, 0.15);
+  color: #a5b4fc;
+  border-color: rgba(102, 126, 234, 0.5);
+}
+
+body.dark-mode .project-carousel-tech-badge:hover {
+  color: var(--white);
+}
+
+body.dark-mode .project-carousel-outcome {
+  background: rgba(34, 197, 94, 0.15);
+  color: #dbeafe;
+  border-left-color: #22c55e;
+}
+
+body.dark-mode .projects-nav-btn {
+  background: #0f172a;
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
 }
