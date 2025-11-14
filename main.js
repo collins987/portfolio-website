@@ -210,9 +210,10 @@ function createProjectCarousel() {
     }
   ];
 
-  // Build carousel HTML
-  const carouselHTML = projects.map((project) => `
-    <article class="project-carousel-card">
+  // Build carousel HTML - include first project at end for infinite loop effect
+  const projectsWithLoop = [...projects, projects[0]];
+  const carouselHTML = projectsWithLoop.map((project, index) => `
+    <article class="project-carousel-card" ${index === projects.length ? 'data-loop="true"' : ''}>
       <div class="project-carousel-wrapper">
         <div class="project-carousel-image">
           <img src="${project.image}" alt="${project.title}" 
@@ -252,6 +253,8 @@ function createProjectCarousel() {
   const container = document.querySelector('.projects-carousel-container');
   const leftBtn = document.querySelector('.projects-nav-left');
   const rightBtn = document.querySelector('.projects-nav-right');
+  const playPauseBtn = document.getElementById('projectsPlayPause');
+  const navDots = document.querySelectorAll('.projects-nav-dot');
 
   if (!track || !container || !leftBtn || !rightBtn) return;
 
@@ -259,53 +262,104 @@ function createProjectCarousel() {
   const scrollAmount = 900;
   let autoScrollInterval = null;
   let isPlaying = true;
-  const AUTO_SCROLL_INTERVAL = 3000; // 3 seconds
-  const AUTO_SCROLL_PAUSE = 3000; // 3 second pause before next
+  let currentProjectIndex = 0;
+  const totalProjects = 5; // Only 5 real projects, 6th is duplicate for looping
+  const AUTO_SCROLL_INTERVAL = 3000; // 3 seconds, no pause
+
+  // Update active dot based on current position
+  function updateActiveDot() {
+    navDots.forEach((dot, index) => {
+      dot.classList.remove('active');
+      if (index === currentProjectIndex) {
+        dot.classList.add('active');
+      }
+    });
+  }
+
+  // Scroll to specific project index with seamless loop
+  function scrollToProject(index, immediate = false) {
+    currentProjectIndex = index % totalProjects;
+    const scrollPosition = index * scrollAmount;
+    track.scrollTo({
+      left: scrollPosition,
+      behavior: immediate ? 'auto' : 'smooth'
+    });
+    updateActiveDot();
+
+    // If we scrolled to the duplicate (6th item), jump back to first after animation
+    if (index >= totalProjects) {
+      setTimeout(() => {
+        track.scrollTo({
+          left: 0,
+          behavior: 'auto'
+        });
+        currentProjectIndex = 0;
+        updateActiveDot();
+      }, 500); // Wait for smooth scroll to finish
+    }
+  }
 
   function scrollLeft() {
-    track.scrollBy({
-      left: -scrollAmount,
-      behavior: 'smooth'
-    });
+    let newIndex = currentProjectIndex - 1;
+    if (newIndex < 0) {
+      newIndex = totalProjects - 1;
+    }
+    scrollToProject(newIndex);
   }
 
   function scrollRight() {
-    track.scrollBy({
-      left: scrollAmount,
-      behavior: 'smooth'
-    });
+    let newIndex = currentProjectIndex + 1;
+    scrollToProject(newIndex);
   }
 
-  // Auto-scroll to next item, then pause before repeating
+  // Auto-scroll to next item every 3 seconds
   function autoScroll() {
     if (!isPlaying) return;
-
     scrollRight();
-
-    // Pause for 3 seconds before next scroll
-    clearInterval(autoScrollInterval);
-    setTimeout(() => {
-      if (isPlaying) {
-        autoScrollInterval = setInterval(autoScroll, AUTO_SCROLL_INTERVAL + AUTO_SCROLL_PAUSE);
-      }
-    }, AUTO_SCROLL_PAUSE);
   }
 
   // Start auto-scroll on load
-  autoScrollInterval = setInterval(autoScroll, AUTO_SCROLL_INTERVAL + AUTO_SCROLL_PAUSE);
+  autoScrollInterval = setInterval(autoScroll, AUTO_SCROLL_INTERVAL);
+  updateActiveDot();
 
   // Pause/Resume on manual interaction
   function pauseAutoScroll() {
     clearInterval(autoScrollInterval);
     isPlaying = false;
+    if (playPauseBtn) {
+      playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+    }
   }
 
   function resumeAutoScroll() {
     if (!isPlaying) {
       isPlaying = true;
-      autoScrollInterval = setInterval(autoScroll, AUTO_SCROLL_INTERVAL + AUTO_SCROLL_PAUSE);
+      if (playPauseBtn) {
+        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+      }
+      autoScrollInterval = setInterval(autoScroll, AUTO_SCROLL_INTERVAL);
     }
   }
+
+  // Play/Pause button toggle
+  if (playPauseBtn) {
+    playPauseBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        pauseAutoScroll();
+      } else {
+        resumeAutoScroll();
+      }
+    });
+  }
+
+  // Dot navigation
+  navDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      pauseAutoScroll();
+      scrollToProject(index);
+      setTimeout(resumeAutoScroll, 2000); // Resume after 2 seconds
+    });
+  });
 
   leftBtn.addEventListener('click', () => {
     pauseAutoScroll();
@@ -319,32 +373,15 @@ function createProjectCarousel() {
     setTimeout(resumeAutoScroll, 2000); // Resume after 2 seconds
   });
 
-  // Update button visibility based on scroll position
+  // Update button visibility - buttons always enabled with looping
   function updateButtonVisibility() {
-    const scrollLeft = track.scrollLeft;
-    const maxScroll = track.scrollWidth - container.clientWidth;
-
-    // Left button
-    if (scrollLeft <= 5) {
-      leftBtn.style.opacity = '0.4';
-      leftBtn.style.pointerEvents = 'none';
-      leftBtn.style.cursor = 'not-allowed';
-    } else {
-      leftBtn.style.opacity = '1';
-      leftBtn.style.pointerEvents = 'auto';
-      leftBtn.style.cursor = 'pointer';
-    }
-
-    // Right button
-    if (scrollLeft >= maxScroll - 5) {
-      rightBtn.style.opacity = '0.4';
-      rightBtn.style.pointerEvents = 'none';
-      rightBtn.style.cursor = 'not-allowed';
-    } else {
-      rightBtn.style.opacity = '1';
-      rightBtn.style.pointerEvents = 'auto';
-      rightBtn.style.cursor = 'pointer';
-    }
+    // Buttons always stay enabled since we have looping functionality
+    leftBtn.style.opacity = '1';
+    leftBtn.style.pointerEvents = 'auto';
+    leftBtn.style.cursor = 'pointer';
+    rightBtn.style.opacity = '1';
+    rightBtn.style.pointerEvents = 'auto';
+    rightBtn.style.cursor = 'pointer';
   }
 
   // Listen to scroll events
