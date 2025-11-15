@@ -672,9 +672,9 @@ window.addEventListener('scroll', () => {
 const floatingCTA = document.getElementById('floatingCTA');
 if (floatingCTA) {
   floatingCTA.addEventListener('click', () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const footer = document.querySelector('footer');
+    if (footer) {
+      footer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
 }
