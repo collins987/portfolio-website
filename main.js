@@ -187,7 +187,6 @@ function createProjectCarousel() {
       tech: ['Django', 'PostgreSQL', 'Docker', 'JWT', 'Gunicorn'],
       outcome: 'Production-deployed with 99.9% uptime, supporting concurrent voting sessions',
       image: 'images/project-nexus.PNG',
-      metrics: { uptime: '99.9%', users: '5K+', time: '3 months' }
     },
     {
       title: 'Azure Security Engineer Labs',
@@ -199,19 +198,17 @@ function createProjectCarousel() {
       tech: ['Azure RBAC', 'Key Vault', 'Defender', 'Sentinel', 'ARM'],
       outcome: 'Demonstrated zero-trust patterns on Azure',
       image: 'images/az500-labs.jpeg',
-      metrics: { environments: '15+', scenarios: '20+', labs: '8' }
     },
     {
       title: 'Doctor Consultation Application',
       badge: 'Full-Stack',
       difficulty: 'Intermediate',
       tagline: 'Real-time appointment booking with Firebase and RBAC',
-      problem: 'Healthcare providers need efficient appointment scheduling with role-based access control',
+      problem: 'Healthcare providers need efficient appointment scheduling with role-based access control and medical services delivery virtually.',
       solution: 'Mobile application with Firebase real-time database and comprehensive RBAC implementation.',
       tech: ['Firebase', 'Java', 'Android', 'Gradle', 'RBAC'],
       outcome: 'Streamlined healthcare appointment scheduling with real-time updates',
       image: 'images/doctor-app.jpeg',
-      metrics: { installs: '2K+', rating: '4.8★', appointments: '10K+' }
     },
     {
       title: 'Real-Time Chat Application',
@@ -223,7 +220,6 @@ function createProjectCarousel() {
       tech: ['MongoDB', 'Express.js', 'React', 'Node.js'],
       outcome: 'Real-time messaging with secure authentication and responsive design',
       image: 'images/chat-app.jpeg',
-      metrics: { messages: '100K+', users: '1K+', latency: '<100ms' }
     },
     {
       title: 'Microsoft SC-900 Labs',
@@ -235,7 +231,6 @@ function createProjectCarousel() {
       tech: ['Entra ID', 'Defender', 'Purview'],
       outcome: 'Demonstrated compliance and security best practices on Microsoft platform',
       image: 'images/sc900-labs.jpeg',
-      metrics: { modules: '12', exercises: '25', certification: 'SC-900' }
     }
   ];
 
