@@ -4,6 +4,23 @@
 // =====================================================
 
 // =====================
+// HERO TITLE - FADE IN WITH GRADIENT
+// =====================
+function initHeroTitle() {
+  const typingText = document.querySelector('.typing-text');
+  if (typingText) {
+    typingText.innerHTML = "Hi, I'm <span class=\"highlight\">Vincent Collins</span>";
+  }
+}
+
+// Run on page load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initHeroTitle);
+} else {
+  initHeroTitle();
+}
+
+// =====================
 // SMOOTH SCROLL NAVIGATION
 // =====================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

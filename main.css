@@ -192,6 +192,25 @@ section {
   75% { transform: rotate(-20deg); }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.typing-text {
+  display: inline-block;
+  animation: fadeInUp 1s ease-out 0.3s forwards;
+  opacity: 0;
+  font-weight: 700;
+  color: var(--white);
+}
+
 .hero-title .highlight {
   background: linear-gradient(to right, #f093fb, #f5576c);
   -webkit-background-clip: text;
