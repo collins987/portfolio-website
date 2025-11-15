@@ -51,10 +51,10 @@
             <i class="fas fa-code"></i> Available for Opportunities
           </div>
           <h1 class="hero-title mb-4">
-            Hi, I'm <span class="highlight">Vincent Collins</span>
+            <span class="hero-emoji">👋</span> Hi, I'm <span class="highlight">Vincent Collins</span>
           </h1>
           <h2 class="hero-subtitle mb-4">
-            Business Analyst & Back-End Developer
+            Business & Data Analyst | Back-End Developer | Cloud Expert |Security Enthusiast
           </h2>
           <p class="hero-description mb-5">
             I bridge business strategy and technical execution through data analysis,<br>
@@ -93,6 +93,12 @@
     </div>
   </section>
 
+  <!-- Floating CTA Button -->
+  <button class="floating-cta" id="floatingCTA" title="Let's chat">
+    <i class="fas fa-comments"></i>
+    <span class="floating-cta-tooltip">Let's Talk!</span>
+  </button>
+
   <!-- Stats Section -->
   <section class="stats-section py-5">
     <div class="container">
@@ -113,16 +119,16 @@
         </div>
         <div class="col-md-3 col-6 mb-4">
           <div class="stat-item">
-            <i class="fas fa-clock stat-icon"></i>
-            <h3 class="stat-number">2+</h3>
-            <p class="stat-label">Years Experience</p>
+            <i class="fas fa-shield-alt stat-icon"></i>
+            <h3 class="stat-number">100%</h3>
+            <p class="stat-label">Security Compliant</p>
           </div>
         </div>
         <div class="col-md-3 col-6 mb-4">
           <div class="stat-item">
-            <i class="fas fa-users stat-icon"></i>
+            <i class="fas fa-chart-line stat-icon"></i>
             <h3 class="stat-number">25%</h3>
-            <p class="stat-label">Error Reduction</p>
+            <p class="stat-label">Operations Improved</p>
           </div>
         </div>
       </div>
@@ -202,45 +208,115 @@
         </div>
       </div>
 
-      <!-- Skills Grid -->
+      <!-- Statistics Cards -->
+      <div class="row mt-5 mb-5">
+      </div>
+
+      <!-- Skills Section - Integrated -->
       <div class="row mt-5">
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="skill-category">
-            <div class="skill-icon-wrapper">
-              <i class="fas fa-code"></i>
+        <div class="col-12">
+          <h3 class="text-center mb-5">Technical Skills & Expertise</h3>
+          
+          <!-- Proficiency Progress Bars -->
+          <div class="skills-proficiency-section mb-5">
+            <h5 class="mb-4">Proficiency Levels</h5>
+            <div class="skills-progress-container">
+              <div class="skill-progress-item">
+                <div class="skill-progress-header">
+                  <span class="skill-name">Backend Development</span>
+                  <span class="skill-percent">90%</span>
+                </div>
+                <div class="skill-progress-bar">
+                  <div class="skill-progress-fill" style="width: 90%"></div>
+                </div>
+              </div>
+
+              <div class="skill-progress-item">
+                <div class="skill-progress-header">
+                  <span class="skill-name">Cloud & Azure</span>
+                  <span class="skill-percent">85%</span>
+                </div>
+                <div class="skill-progress-bar">
+                  <div class="skill-progress-fill" style="width: 85%"></div>
+                </div>
+              </div>
+
+              <div class="skill-progress-item">
+                <div class="skill-progress-header">
+                  <span class="skill-name">Data Analysis</span>
+                  <span class="skill-percent">80%</span>
+                </div>
+                <div class="skill-progress-bar">
+                  <div class="skill-progress-fill" style="width: 80%"></div>
+                </div>
+              </div>
+
+              <div class="skill-progress-item">
+                <div class="skill-progress-header">
+                  <span class="skill-name">Security & DevOps</span>
+                  <span class="skill-percent">88%</span>
+                </div>
+                <div class="skill-progress-bar">
+                  <div class="skill-progress-fill" style="width: 88%"></div>
+                </div>
+              </div>
+
+              <div class="skill-progress-item">
+                <div class="skill-progress-header">
+                  <span class="skill-name">Frontend & UI</span>
+                  <span class="skill-percent">75%</span>
+                </div>
+                <div class="skill-progress-bar">
+                  <div class="skill-progress-fill" style="width: 75%"></div>
+                </div>
+              </div>
             </div>
-            <h4>Languages & Frameworks</h4>
-            <p>Python, Django, JavaScript, Node.js, Express.js, React, SQL, HTML/CSS</p>
           </div>
-        </div>
-        
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="skill-category">
-            <div class="skill-icon-wrapper">
-              <i class="fas fa-cloud"></i>
+
+          <!-- Skill Categories Grid -->
+          <div class="skills-categories-section">
+            <h5 class="mb-4">Technical Categories</h5>
+            <div class="row">
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="skill-category">
+                  <div class="skill-icon-wrapper">
+                    <i class="fas fa-code"></i>
+                  </div>
+                  <h6>Languages & Frameworks</h6>
+                  <p>Python, Django, JavaScript, Node.js, Express.js, React, SQL, HTML/CSS</p>
+                </div>
+              </div>
+              
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="skill-category">
+                  <div class="skill-icon-wrapper">
+                    <i class="fas fa-cloud"></i>
+                  </div>
+                  <h6>Cloud & DevOps</h6>
+                  <p>AWS, Azure, Docker, Kubernetes, Jenkins, Ansible, CI/CD</p>
+                </div>
+              </div>
+              
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="skill-category">
+                  <div class="skill-icon-wrapper">
+                    <i class="fas fa-chart-bar"></i>
+                  </div>
+                  <h6>Data & Analytics</h6>
+                  <p>Power BI, Pandas, NumPy, Matplotlib, Seaborn, SQL, Excel</p>
+                </div>
+              </div>
+              
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="skill-category">
+                  <div class="skill-icon-wrapper">
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                  <h6>Security</h6>
+                  <p>JWT Auth, Azure Security, Microsoft Defender, Zero-Trust Architecture</p>
+                </div>
+              </div>
             </div>
-            <h4>Cloud & DevOps</h4>
-            <p>AWS, Azure, Docker, Kubernetes, Jenkins, Ansible, CI/CD</p>
-          </div>
-        </div>
-        
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="skill-category">
-            <div class="skill-icon-wrapper">
-              <i class="fas fa-chart-bar"></i>
-            </div>
-            <h4>Data & Analytics</h4>
-            <p>Power BI, Pandas, NumPy, Matplotlib, Seaborn, SQL, Excel</p>
-          </div>
-        </div>
-        
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="skill-category">
-            <div class="skill-icon-wrapper">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <h4>Security</h4>
-            <p>JWT Auth, Azure Security, Microsoft Defender, Zero-Trust Architecture</p>
           </div>
         </div>
       </div>
@@ -467,90 +543,45 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact-section py-5">
+
+
+  <!-- Footer -->
+  <footer class="footer bg-dark text-white py-5 mt-5">
     <div class="container">
       <div class="row">
-        <div class="col-lg-12 text-center mb-5">
-          <h2 class="section-title">Let's Connect</h2>
-          <div class="title-underline"></div>
-          <p class="section-subtitle">I'm always open to discussing new opportunities and collaborations</p>
-        </div>
-      </div>
-
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="contact-card">
-            <!-- Contact Methods -->
-            <div class="row mb-5">
-              <div class="col-md-4 mb-4 text-center">
-                <div class="contact-method">
-                  <div class="contact-icon">
-                    <i class="fas fa-envelope"></i>
-                  </div>
-                  <h5>Email</h5>
-                  <a href="mailto:vincentcollins690@gmail.com">vincentcollins690@gmail.com</a>
-                </div>
-              </div>
-
-              <div class="col-md-4 mb-4 text-center">
-                <div class="contact-method">
-                  <div class="contact-icon">
-                    <i class="fas fa-phone"></i>
-                  </div>
-                  <h5>Phone</h5>
-                  <a href="tel:+254758550468">+254 758 550 468</a>
-                </div>
-              </div>
-
-              <div class="col-md-4 mb-4 text-center">
-                <div class="contact-method">
-                  <div class="contact-icon">
-                    <i class="fas fa-map-marker-alt"></i>
-                  </div>
-                  <h5>Location</h5>
-                  <p>Nairobi, Kenya</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Social Links -->
-            <div class="contact-social text-center mb-4">
-              <a href="https://github.com/collins987/" target="_blank" class="contact-social-link">
-                <i class="fab fa-github"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/vincentcollins1/" target="_blank" class="contact-social-link">
-                <i class="fab fa-linkedin"></i>
-              </a>
-              <a href="mailto:vincentcollins690@gmail.com" class="contact-social-link">
-                <i class="fas fa-envelope"></i>
-              </a>
-              <a href="tel:+254758550468" class="contact-social-link">
-                <i class="fas fa-phone"></i>
-              </a>
-            </div>
-
-            <!-- Download Resume -->
-            <div class="text-center">
-              <a href="Documents/Vincent Onchieku Collins Resume.pdf" class="btn btn-primary btn-lg" download>
-                <i class="fas fa-download mr-2"></i>Download Resume
-              </a>
-            </div>
+        <div class="col-lg-8 mx-auto text-center mb-4">
+          <h4 class="mb-3">Let's Connect</h4>
+          <p class="text-muted mb-4">I'm always open to discussing new opportunities and collaborations</p>
+          
+          <!-- Social Links & Actions -->
+          <div class="footer-social-links mb-4">
+            <a href="https://github.com/collins987/" target="_blank" class="footer-social-link" title="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/vincentcollins1/" target="_blank" class="footer-social-link" title="LinkedIn">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:vincentcollins690@gmail.com" class="footer-social-link" title="Email">
+              <i class="fas fa-envelope"></i>
+            </a>
+            <a href="tel:+254758550468" class="footer-social-link" title="Phone">
+              <i class="fas fa-phone"></i>
+            </a>
+            <a href="Documents/Vincent Onchieku Collins Resume.pdf" class="footer-social-link" download title="Download Resume">
+              <i class="fas fa-download"></i>
+            </a>
+            <a href="#" class="footer-social-link" title="Location: Nairobi, Kenya" onclick="alert('📍 Nairobi, Kenya'); return false;">
+              <i class="fas fa-map-marker-alt"></i>
+            </a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="footer-section py-4">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-          <p class="mb-0">&copy; 2025 Vincent Collins. All rights reserved.</p>
-        </div>
-        <div class="col-md-6 text-center text-md-right">
-          <p class="mb-0">Built with <i class="fas fa-heart text-danger"></i> and <i class="fas fa-coffee"></i></p>
+      <!-- Footer Bottom -->
+      <hr class="bg-muted">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <p class="text-muted small mb-0">&copy; 2025 Vincent Collins. All rights reserved. Designed with <i class="fas fa-heart" style="color: #f5576c;"></i> and built with care.</p>
         </div>
       </div>
     </div>

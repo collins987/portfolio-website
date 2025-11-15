@@ -161,64 +161,81 @@ function createProjectCarousel() {
     {
       title: 'Online Poll System',
       badge: 'Featured',
+      difficulty: 'Advanced',
       tagline: 'Production-ready voting platform with enterprise-grade security',
       problem: 'Organizations need secure, transparent voting systems that prevent fraud while maintaining user privacy.',
       solution: 'Built with Django REST Framework, PostgreSQL, and Docker. Implemented database-level constraints to prevent duplicate votes and JWT authentication for secure access.',
       tech: ['Django', 'PostgreSQL', 'Docker', 'JWT', 'Gunicorn'],
       outcome: 'Production-deployed with 99.9% uptime, supporting concurrent voting sessions',
-      image: 'images/project-nexus.PNG'
+      image: 'images/project-nexus.PNG',
+      metrics: { uptime: '99.9%', users: '5K+', time: '3 months' }
     },
     {
       title: 'Azure Security Engineer Labs',
       badge: 'Security',
+      difficulty: 'Advanced',
       tagline: 'Enterprise cloud security in practice',
       problem: 'Cloud environments require layered security controls to protect against modern threats',
       solution: 'Implemented just-in-time VM access, NSGs with least-privilege and Sentinel SIEM integration.',
       tech: ['Azure RBAC', 'Key Vault', 'Defender', 'Sentinel', 'ARM'],
       outcome: 'Demonstrated zero-trust patterns on Azure',
-      image: 'images/az500-labs.jpeg'
+      image: 'images/az500-labs.jpeg',
+      metrics: { environments: '15+', scenarios: '20+', labs: '8' }
     },
     {
       title: 'Doctor Consultation Application',
       badge: 'Full-Stack',
+      difficulty: 'Intermediate',
       tagline: 'Real-time appointment booking with Firebase and RBAC',
       problem: 'Healthcare providers need efficient appointment scheduling with role-based access control',
       solution: 'Mobile application with Firebase real-time database and comprehensive RBAC implementation.',
       tech: ['Firebase', 'Java', 'Android', 'Gradle', 'RBAC'],
       outcome: 'Streamlined healthcare appointment scheduling with real-time updates',
-      image: 'images/doctor-app.jpeg'
+      image: 'images/doctor-app.jpeg',
+      metrics: { installs: '2K+', rating: '4.8★', appointments: '10K+' }
     },
     {
       title: 'Real-Time Chat Application',
       badge: 'MERN Stack',
+      difficulty: 'Intermediate',
       tagline: 'Secure messaging platform with JWT & WebSocket connections',
       problem: 'Users need secure, real-time communication with scalable architecture',
       solution: 'Full-stack application with MongoDB, Express.js, React, and Node.js using WebSocket for real-time updates.',
       tech: ['MongoDB', 'Express.js', 'React', 'Node.js'],
       outcome: 'Real-time messaging with secure authentication and responsive design',
-      image: 'images/chat-app.jpeg'
+      image: 'images/chat-app.jpeg',
+      metrics: { messages: '100K+', users: '1K+', latency: '<100ms' }
     },
     {
       title: 'Microsoft SC-900 Labs',
       badge: 'Compliance',
+      difficulty: 'Beginner',
       tagline: 'Hands-on labs on security, compliance and identity',
       problem: 'Organizations need practical understanding of Microsoft security and compliance solutions',
       solution: 'Comprehensive hands-on labs covering Entra ID, Defender, and Purview with real-world scenarios.',
       tech: ['Entra ID', 'Defender', 'Purview'],
       outcome: 'Demonstrated compliance and security best practices on Microsoft platform',
-      image: 'images/sc900-labs.jpeg'
+      image: 'images/sc900-labs.jpeg',
+      metrics: { modules: '12', exercises: '25', certification: 'SC-900' }
     }
   ];
 
   // Build carousel HTML - include first project at end for infinite loop effect
   const projectsWithLoop = [...projects, projects[0]];
-  const carouselHTML = projectsWithLoop.map((project, index) => `
+  const carouselHTML = projectsWithLoop.map((project, index) => {
+    const difficultyClass = project.difficulty?.toLowerCase() || 'intermediate';
+    const metricsHTML = project.metrics ? Object.entries(project.metrics)
+      .map(([key, value]) => `<span class="project-metric"><strong>${key}:</strong> ${value}</span>`)
+      .join('') : '';
+    
+    return `
     <article class="project-carousel-card" ${index === projects.length ? 'data-loop="true"' : ''}>
       <div class="project-carousel-wrapper">
         <div class="project-carousel-image">
           <img src="${project.image}" alt="${project.title}" 
                onerror="this.src='https://via.placeholder.com/400x300?text=${encodeURIComponent(project.title)}'">
           <span class="project-carousel-badge">${project.badge}</span>
+          <span class="project-difficulty-badge ${difficultyClass}">${project.difficulty}</span>
         </div>
         <div class="project-carousel-content">
           <h3 class="project-carousel-title">${project.title}</h3>
@@ -241,10 +258,12 @@ function createProjectCarousel() {
             <i class="fas fa-check-circle"></i>
             <strong>Outcome:</strong> ${project.outcome}
           </div>
+          ${metricsHTML ? `<div class="project-metrics-grid">${metricsHTML}</div>` : ''}
         </div>
       </div>
     </article>
-  `).join('');
+  `;
+  }).join('');
 
   carouselTrack.innerHTML = carouselHTML;
 
@@ -625,6 +644,55 @@ window.addEventListener('load', () => {
     document.body.style.opacity = '1';
   }, 100);
 });
+
+// =====================
+// PROGRESS INDICATOR
+// =====================
+const progressIndicator = document.getElementById('progressIndicator');
+const progressFill = document.getElementById('progressFill');
+const progressText = progressIndicator?.querySelector('.progress-text');
+
+window.addEventListener('scroll', () => {
+  if (!progressIndicator) return;
+  
+  const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrolled = (window.scrollY / scrollHeight) * 100;
+  
+  if (progressFill) {
+    progressFill.style.strokeDashoffset = `calc(282.7 - (282.7 * ${scrolled / 100}))`;
+  }
+  if (progressText) {
+    progressText.textContent = `${Math.round(scrolled)}%`;
+  }
+});
+
+// =====================
+// FLOATING CTA BUTTON
+// =====================
+const floatingCTA = document.getElementById('floatingCTA');
+if (floatingCTA) {
+  floatingCTA.addEventListener('click', () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+}
+
+// =====================
+// NEWSLETTER FORM
+// =====================
+const newsletterForm = document.querySelector('.newsletter-form');
+if (newsletterForm) {
+  newsletterForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const input = newsletterForm.querySelector('.newsletter-input');
+    if (input && input.value) {
+      alert(`Thanks for subscribing with ${input.value}! 🎉`);
+      input.value = '';
+    }
+  });
+}
 
 // =====================
 // INITIALIZATION
