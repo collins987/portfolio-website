@@ -258,8 +258,25 @@ function createProjectCarousel() {
 
   if (!track || !container || !leftBtn || !rightBtn) return;
 
-  // Smooth scroll navigation with proper element reference
-  const scrollAmount = 900;
+  // Calculate scroll amount based on screen width
+  function getScrollAmount() {
+    const width = window.innerWidth;
+    if (width >= 1200) {
+      return 920; // Full desktop
+    } else if (width >= 1024) {
+      return 850; // Laptop
+    } else if (width >= 768) {
+      return 800; // Tablet landscape
+    } else if (width >= 600) {
+      return 750; // Tablet portrait
+    } else if (width >= 480) {
+      return 700; // Mobile landscape
+    } else {
+      return 650; // Mobile portrait
+    }
+  }
+
+  let scrollAmount = getScrollAmount();
   let autoScrollInterval = null;
   let isPlaying = true;
   let currentProjectIndex = 0;
@@ -386,7 +403,10 @@ function createProjectCarousel() {
 
   // Listen to scroll events
   track.addEventListener('scroll', updateButtonVisibility);
-  window.addEventListener('resize', updateButtonVisibility);
+  window.addEventListener('resize', () => {
+    updateButtonVisibility();
+    scrollAmount = getScrollAmount(); // Recalculate on resize
+  });
 
   // Initialize button states after content loads
   setTimeout(updateButtonVisibility, 200);
