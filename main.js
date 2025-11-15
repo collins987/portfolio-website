@@ -131,14 +131,16 @@ function ensureTimelineIcons() {
   if (timelineIcons.length === 0) return;
 
   const iconClasses = [
-    'fas fa-graduation-cap',
-    'fas fa-server',
-    'fas fa-cloud',
-    'fas fa-chart-line',
-    'fas fa-users',
-    'fas fa-briefcase',
-    'fas fa-code',
-    'fas fa-shield-alt'
+    'fab fa-google',           // ALX Google Cloud Program
+    'fas fa-robot',            // n8n Workflow Automation
+    'fas fa-server',           // Back-End Specialization
+    'fab fa-microsoft',        // Cloud Security Expert
+    'fas fa-chart-pie',        // Business Analysis
+    'fas fa-handshake',        // Professional Development
+    'fas fa-database',         // Data Analytics
+    'fab fa-aws',              // Cloud Infrastructure
+    'fas fa-lock',             // IT Operations & Security
+    'fas fa-graduation-cap'    // Business IT Foundation
   ];
 
   timelineIcons.forEach((icon, index) => {
