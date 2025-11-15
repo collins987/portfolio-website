@@ -1044,6 +1044,46 @@ section {
     gap: 1.5rem;
     padding: 1.2rem;
   }
+
+  /* Skills Responsive */
+  .skills-proficiency-section {
+    margin-bottom: 3rem;
+  }
+
+  .skill-progress-item {
+    margin-bottom: 1.8rem;
+  }
+
+  .skill-category {
+    padding: 1.5rem;
+  }
+
+  .skill-category h6 {
+    font-size: 1rem;
+  }
+
+  .skill-category p {
+    font-size: 0.9rem;
+  }
+
+  /* Footer Responsive */
+  footer {
+    padding: 1.3rem 0 0.65rem;
+  }
+
+  footer h4 {
+    font-size: 1.4rem;
+  }
+
+  footer p {
+    font-size: 0.9rem;
+  }
+
+  .footer-social-link {
+    width: 42px;
+    height: 42px;
+    font-size: 1.05rem;
+  }
   
   .project-carousel-image {
     height: auto;
@@ -1253,6 +1293,48 @@ section {
   .project-carousel-outcome {
     font-size: 0.75rem;
     padding: 0.4rem 0.7rem;
+  }
+
+  /* Skills Responsive - 600px */
+  .skills-proficiency-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .skill-progress-item {
+    margin-bottom: 1.5rem;
+  }
+
+  .skills-categories-section .row {
+    margin-bottom: 1rem;
+  }
+
+  .skill-category {
+    padding: 1.25rem 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-category h6 {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Footer Responsive - 600px */
+  footer {
+    padding: 1.1rem 0 0.55rem;
+  }
+
+  footer h4 {
+    font-size: 1.15rem;
+  }
+
+  footer p {
+    font-size: 0.78rem;
+  }
+
+  .footer-social-link {
+    width: 37px;
+    height: 37px;
+    font-size: 0.95rem;
   }
   
   .projects-nav-btn {
@@ -1872,8 +1954,8 @@ section {
 footer {
   background: var(--text-dark);
   color: var(--white);
-  padding: 2rem 0 0.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem 0 0.75rem;
+  border-top: none;
   text-align: center;
 }
 
@@ -1881,21 +1963,21 @@ footer h4 {
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--white);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.15rem;
 }
 
 footer p {
   font-size: 0.95rem;
   line-height: 1.4;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .footer-social-links {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.8rem;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .footer-social-link {
@@ -1917,11 +1999,6 @@ footer p {
   border-color: var(--primary-color);
   color: var(--white);
   transform: translateY(-5px);
-}
-
-footer hr {
-  border-color: rgba(255, 255, 255, 0.1);
-  margin: 1rem 0 0.75rem;
 }
 
 footer small {
@@ -2462,6 +2539,61 @@ body.dark-mode .timeline-icon {
     font-size: 0.85rem;
   }
 
+  /* Skills Progress Responsive */
+  .skills-proficiency-section h5 {
+    font-size: 1.2rem;
+  }
+
+  .skill-progress-item {
+    margin-bottom: 1.5rem;
+  }
+
+  .skill-progress-header {
+    font-size: 0.9rem;
+  }
+
+  .skill-progress-bar {
+    height: 8px;
+  }
+
+  .skills-categories-section h5 {
+    font-size: 1.2rem;
+  }
+
+  /* Footer Responsive */
+  footer {
+    padding: 1.2rem 0 0.6rem;
+  }
+
+  footer h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0.1rem;
+  }
+
+  footer p {
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .footer-social-links {
+    gap: 0.7rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .footer-social-link {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  footer hr {
+    margin: 0.75rem 0 0.5rem;
+  }
+
+  footer small {
+    font-size: 0.8rem;
+  }
+
   /* Projects Section */
   .projects-section {
     padding: 4rem 0 !important;
@@ -2732,6 +2864,50 @@ body.dark-mode .timeline-icon {
     height: 50px;
     font-size: 1.2rem;
   }
+
+  /* Footer Small Mobile */
+  footer {
+    padding: 1rem 0 0.5rem;
+  }
+
+  footer h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.1rem;
+  }
+
+  footer p {
+    font-size: 0.75rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .footer-social-links {
+    gap: 0.65rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-social-link {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+
+  /* Skills Small Mobile */
+  .skills-proficiency-section h5,
+  .skills-categories-section h5 {
+    font-size: 1.1rem;
+  }
+
+  .skill-progress-header {
+    font-size: 0.85rem;
+  }
+
+  .skill-category h6 {
+    font-size: 0.95rem;
+  }
+
+  .skill-category p {
+    font-size: 0.8rem;
+  }
 }
 
 /* ===================================
@@ -2794,6 +2970,78 @@ body.dark-mode .timeline-icon {
   .skill-pill {
     font-size: 0.75rem;
     padding: 0.35rem 0.7rem;
+  }
+
+  /* Footer Extra Small */
+  footer {
+    padding: 0.75rem 0 0.4rem;
+  }
+
+  footer h4 {
+    font-size: 1rem;
+    margin-bottom: 0.08rem;
+  }
+
+  footer p {
+    font-size: 0.7rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .footer-social-links {
+    gap: 0.55rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .footer-social-link {
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
+  }
+
+  footer hr {
+    margin: 0.5rem 0 0.4rem;
+  }
+
+  footer small {
+    font-size: 0.7rem;
+  }
+
+  /* Skills Extra Small */
+  .skills-proficiency-section h5,
+  .skills-categories-section h5 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .skill-progress-item {
+    margin-bottom: 1.2rem;
+  }
+
+  .skill-progress-header {
+    font-size: 0.8rem;
+  }
+
+  .skill-progress-bar {
+    height: 6px;
+  }
+
+  .skill-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+
+  .skill-category {
+    padding: 1rem 0.8rem;
+  }
+
+  .skill-category h6 {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-category p {
+    font-size: 0.75rem;
   }
 }
 
